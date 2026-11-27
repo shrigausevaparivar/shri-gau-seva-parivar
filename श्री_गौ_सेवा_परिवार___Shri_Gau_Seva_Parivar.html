@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="hi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>श्री गौ सेवा परिवार | Shri Gau Seva Parivar</title>
+  <meta name="description" content="गौ सेवा ही सच्ची ईश्वर सेवा है। निराश्रित, बीमार और वृद्ध गौमाताओं के लिए चारा, चिकित्सा और सुरक्षित आश्रय।" />
+
+  <!-- Google Fonts: Devanagari & Serif/Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: {
+              50: '#FDFBF7',
+              100: '#FAF6EE',
+              200: '#F2E9D8',
+              300: '#E5D5B7',
+            },
+            maroon: {
+              700: '#9E2A2B',
+              800: '#8B261D',
+              900: '#5E1812',
+            },
+            saffron: {
+              500: '#E09F3E',
+              600: '#D97706',
+              700: '#B45309',
+            },
+            forest: {
+              600: '#2D6A4F',
+              700: '#1B4332',
+            }
+          },
+          fontFamily: {
+            hindi: ['"Noto Sans Devanagari"', '"Inter"', 'sans-serif'],
+            serifHindi: ['"Tiro Devanagari Hindi"', '"Playfair Display"', 'serif'],
+            sans: ['"Inter"', '"Noto Sans Devanagari"', 'sans-serif'],
+          },
+          animation: {
+            'spin-slow': 'spin 28s linear infinite',
+            'marquee': 'marquee 28s linear infinite',
+            'float': 'float 5s ease-in-out infinite',
+          },
+          keyframes: {
+            marquee: {
+              '0%': { transform: 'translateX(0%)' },
+              '100%': { transform: 'translateX(-50%)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-6px)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FDFBF7;
+      color: #291D18;
+      font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Subtle Sacred Sun-Ray Background Pattern */
+    .sunray-bg {
+      background-image: radial-gradient(circle at 50% 0%, rgba(224, 159, 62, 0.14) 0%, rgba(253, 251, 247, 0) 68%);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF6EE;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D6C3A5;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #8B261D;
+    }
+
+    /* Pause marquee on hover */
+    .marquee-wrapper:hover .animate-marquee {
+      animation-play-state: paused;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-saffron-500/20 selection:text-maroon-900">
+
+  <!-- Toast Notification Box (Replaces alert) -->
+  <div id="toast-box" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-all duration-300 transform -translate-y-3">
+    <div class="bg-maroon-900 text-cream-50 px-5 py-3 rounded-full shadow-xl border border-saffron-500/40 flex items-center gap-2.5 text-sm font-medium">
+      <span class="w-2 h-2 rounded-full bg-saffron-500 animate-ping"></span>
+      <span id="toast-message">संदेश कॉपी हो गया है</span>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- STICKY TOP NAVIGATION BAR                                 -->
+  <!-- ========================================================= -->
+  <header class="sticky top-0 z-40 bg-cream-50/90 backdrop-blur-md border-b border-cream-300/70 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+      
+      <!-- Left: Sacred Circular Seal + Brand Name -->
+      <a href="#top" class="flex items-center gap-3 group focus:outline-none">
+        <div class="relative w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center shrink-0">
+          <!-- Rotating Circular Text Seal -->
+          <svg viewBox="0 0 120 120" class="w-full h-full animate-spin-slow text-maroon-800/80">
+            <defs>
+              <path id="sealCircle" d="M 60, 60 m -44, 0 a 44,44 0 1,1 88,0 a 44,44 0 1,1 -88,0" />
+            </defs>
+            <circle cx="60" cy="60" r="54" fill="none" stroke="currentColor" stroke-width="0.7" stroke-dasharray="2 3" opacity="0.5"/>
+            <text font-size="9.2" font-weight="600" letter-spacing="2.1" fill="currentColor">
+              <textPath href="#sealCircle" startOffset="0%">
+                GAU SEVA • गौ सेवा • KARUNA • करुणा •
+              </textPath>
+            </text>
+          </svg>
+          <!-- Center Sacred Om -->
+          <span class="absolute font-serifHindi text-xl sm:text-2xl font-bold text-maroon-800 group-hover:scale-110 transition-transform">
+            ॐ
+          </span>
+        </div>
+
+        <div class="flex flex-col">
+          <span class="font-serifHindi text-lg sm:text-xl font-bold text-maroon-900 leading-tight tracking-tight" data-i18n="brandName">
+            श्री गौ सेवा परिवार
+          </span>
+          <span class="text-[11px] sm:text-xs font-medium text-saffron-700 tracking-wider uppercase">
+            Shri Gau Seva Parivar
+          </span>
+        </div>
+      </a>
+
+      <!-- Center: Navigation Links (Desktop) -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium text-stone-700">
+        <a href="#sankalp" class="hover:text-maroon-800 transition-colors py-1" data-i18n="navAbout">परिचय</a>
+        <a href="#panch-seva" class="hover:text-maroon-800 transition-colors py-1" data-i18n="navSeva">सेवा</a>
+        <a href="#daan" class="hover:text-maroon-800 transition-colors py-1 font-semibold text-maroon-800" data-i18n="navDaan">दान</a>
+        <a href="#jhalak" class="hover:text-maroon-800 transition-colors py-1" data-i18n="navGallery">झलक</a>
+        <a href="#sampark" class="hover:text-maroon-800 transition-colors py-1" data-i18n="navContact">संपर्क</a>
+      </nav>
+
+      <!-- Right: Bilingual Toggle (हिं / EN) + WhatsApp Quick Button -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Language Toggle Pill -->
+        <div class="inline-flex items-center bg-cream-200/80 p-1 rounded-full border border-cream-300" role="group" aria-label="Language Switcher">
+          <button id="btn-lang-hi" onclick="setLanguage('hi')" class="px-2.5 py-1 rounded-full text-xs font-bold transition-all bg-maroon-800 text-cream-50 shadow-sm">
+            हिं
+          </button>
+          <button id="btn-lang-en" onclick="setLanguage('en')" class="px-2.5 py-1 rounded-full text-xs font-bold transition-all text-stone-700 hover:text-maroon-800">
+            EN
+          </button>
+        </div>
+
+        <!-- WhatsApp Quick Action -->
+        <a href="https://wa.me/918306865537?text=%E0%A4%9C%E0%A4%AF%20%E0%A4%97%E0%A5%8C%E0%A4%AE%E0%A4%BE%E0%A4%A4%E0%A4%BE!%20%E0%A4%AE%E0%A5%88%E0%A4%82%20%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%80%20%E0%A4%97%E0%A5%8C%20%E0%A4%B8%E0%A5%87%E0%A4%B5%E0%A4%BE%20%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%B5%E0%A4%BE%E0%A4%B0%20%E0%A4%B8%E0%A5%87%20%E0%A4%9C%E0%A5%81%E0%A4%A1%E0%A4%BC%E0%A4%A8%E0%A4%BE%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A4%BE/%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A5%80%20%E0%A4%B9%E0%A5%82%E0%A4%81%E0%A5%A4"
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-1.5 bg-forest-600 hover:bg-forest-700 text-white text-xs sm:text-sm font-semibold px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-full shadow-sm hover:shadow transition-all">
+          <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+          </svg>
+          <span data-i18n="navChat">बात करें</span>
+        </a>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl text-maroon-900 hover:bg-cream-200 transition-colors" aria-label="Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div id="mobile-menu" class="hidden md:hidden bg-cream-50 border-t border-cream-300 px-4 pt-3 pb-5 space-y-2 shadow-lg">
+      <a href="#sankalp" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-base font-medium text-stone-800 hover:bg-cream-200/70" data-i18n="navAbout">परिचय</a>
+      <a href="#panch-seva" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-base font-medium text-stone-800 hover:bg-cream-200/70" data-i18n="navSeva">सेवा</a>
+      <a href="#daan" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-base font-semibold text-maroon-800 bg-saffron-500/15" data-i18n="navDaan">दान</a>
+      <a href="#jhalak" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-base font-medium text-stone-800 hover:bg-cream-200/70" data-i18n="navGallery">झलक</a>
+      <a href="#sampark" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl text-base font-medium text-stone-800 hover:bg-cream-200/70" data-i18n="navContact">संपर्क</a>
+    </div>
+  </header>
+
+  <!-- ========================================================= -->
+  <!-- 1. HERO SECTION (With Sacred Sun-Ray Arc Motif)           -->
+  <!-- ========================================================= -->
+  <section id="top" class="relative pt-10 pb-16 sm:pt-16 sm:pb-24 sunray-bg overflow-hidden">
+    <!-- Decorative Radial Sun-Ray Arc SVG (Inspired by PDF Page 1 & 2) -->
+    <div class="pointer-events-none absolute inset-x-0 top-0 flex justify-center overflow-hidden opacity-45">
+      <svg viewBox="0 0 1000 460" class="w-[1000px] max-w-none h-auto text-maroon-800/30">
+        <!-- Dashed Semi-Circle Horizon -->
+        <path d="M 110 450 A 390 390 0 0 1 890 450" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 6"/>
+        <path d="M 160 450 A 340 340 0 0 1 840 450" fill="none" stroke="#D97706" stroke-width="0.8" stroke-dasharray="2 8"/>
+        <!-- Radial Sun Rays -->
+        <g stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+          <line x1="500" y1="60" x2="500" y2="15" />
+          <line x1="399" y1="73" x2="387" y2="30" />
+          <line x1="305" y1="112" x2="282" y2="73" />
+          <line x1="224" y1="174" x2="192" y2="142" />
+          <line x1="162" y1="255" x2="123" y2="232" />
+          <line x1="123" y1="349" x2="80" y2="337" />
+          <line x1="601" y1="73" x2="613" y2="30" />
+          <line x1="695" y1="112" x2="718" y2="73" />
+          <line x1="776" y1="174" x2="808" y2="142" />
+          <line x1="838" y1="255" x2="877" y2="232" />
+          <line x1="877" y1="349" x2="920" y2="337" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="relative max-w-5xl mx-auto px-4 sm:px-6 text-center">
+      <!-- Sacred Top Pill Badges -->
+      <div class="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-3 px-4 py-1.5 rounded-full bg-cream-100 border border-saffron-500/40 shadow-sm mb-6">
+        <span class="text-xs sm:text-sm font-semibold text-maroon-800" data-i18n="pill1">गौ सेवा</span>
+        <span class="text-saffron-600">•</span>
+        <span class="text-xs sm:text-sm font-semibold text-maroon-800" data-i18n="pill2">गौ रक्षा</span>
+        <span class="text-saffron-600">•</span>
+        <span class="text-xs sm:text-sm font-semibold text-maroon-800" data-i18n="pill3">गौ सम्मान</span>
+      </div>
+
+      <!-- Main Hero Headline -->
+      <h1 class="font-serifHindi text-4xl sm:text-5xl md:text-6xl font-bold text-maroon-900 leading-[1.22] tracking-tight mb-5 max-w-3xl mx-auto" data-i18n="heroTitle">
+        गौ सेवा ही सच्ची ईश्वर सेवा है।
+      </h1>
+
+      <!-- Subheadline -->
+      <p class="text-base sm:text-lg md:text-xl text-stone-700 max-w-2xl mx-auto leading-relaxed mb-8" data-i18n="heroSub">
+        निराश्रित, बीमार और वृद्ध गौमाताओं के लिए चारा, चिकित्सा और सुरक्षित आश्रय – आपके सहयोग से, हर दिन।
+      </p>
+
+      <!-- 3 Quick Highlight Pills (01 हरा चारा | 02 चिकित्सा | 03 आश्रय) -->
+      <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 mb-9">
+        <div class="flex items-center gap-2 bg-white/90 border border-cream-300 px-4 py-2 rounded-full shadow-sm">
+          <span class="text-xs font-bold text-saffron-700 bg-saffron-500/15 px-2 py-0.5 rounded-full">01</span>
+          <span class="text-sm font-semibold text-stone-800" data-i18n="hl1">हरा चारा</span>
+        </div>
+        <div class="flex items-center gap-2 bg-white/90 border border-cream-300 px-4 py-2 rounded-full shadow-sm">
+          <span class="text-xs font-bold text-saffron-700 bg-saffron-500/15 px-2 py-0.5 rounded-full">02</span>
+          <span class="text-sm font-semibold text-stone-800" data-i18n="hl2">चिकित्सा</span>
+        </div>
+        <div class="flex items-center gap-2 bg-white/90 border border-cream-300 px-4 py-2 rounded-full shadow-sm">
+          <span class="text-xs font-bold text-saffron-700 bg-saffron-500/15 px-2 py-0.5 rounded-full">03</span>
+          <span class="text-sm font-semibold text-stone-800" data-i18n="hl3">आश्रय</span>
+        </div>
+      </div>
+
+      <!-- Primary & Secondary CTA Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+        <a href="#daan" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-maroon-800 hover:bg-maroon-900 text-cream-50 font-semibold text-base px-8 py-4 rounded-full shadow-lg shadow-maroon-800/20 hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+          <span class="text-saffron-500 text-lg">🪔</span>
+          <span data-i18n="ctaDonate">गौ सेवा में दान करें</span>
+        </a>
+
+        <a href="https://wa.me/918306865537?text=%E0%A4%9C%E0%A4%AF%20%E0%A4%97%E0%A5%8C%E0%A4%AE%E0%A4%BE%E0%A4%A4%E0%A4%BE!%20%E0%A4%AE%E0%A5%88%E0%A4%82%20%E0%A4%97%E0%A5%8C%20%E0%A4%B8%E0%A5%87%E0%A4%B5%E0%A4%BE%20%E0%A4%95%E0%A5%87%20%E0%A4%AC%E0%A4%BE%E0%A4%B0%E0%A5%87%20%E0%A4%AE%E0%A5%87%E0%A4%82%20%E0%A4%9C%E0%A4%BE%E0%A4%A8%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%80%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A4%BE/%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A5%80%20%E0%A4%B9%E0%A5%82%E0%A4%81%E0%A5%A4"
+           target="_blank" rel="noopener noreferrer"
+           class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-cream-100 text-forest-700 border-2 border-forest-600/30 font-semibold text-base px-7 py-3.5 rounded-full shadow-sm hover:shadow transition-all">
+          <svg class="w-5 h-5 fill-forest-600" viewBox="0 0 24 24">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+          </svg>
+          <span data-i18n="ctaWhatsapp">WhatsApp पर बात करें</span>
+        </a>
+      </div>
+
+      <!-- Sacred Sanskrit Shloka Feature Card (PDF Page 2 Aesthetic) -->
+      <div class="relative max-w-3xl mx-auto bg-white rounded-3xl border border-cream-300 shadow-xl shadow-stone-900/5 p-6 sm:p-10 overflow-hidden">
+        <!-- Decorative Corner Sunburst Lines -->
+        <div class="absolute -top-12 -right-12 w-40 h-40 rounded-full border border-dashed border-saffron-500/40 pointer-events-none"></div>
+        <div class="absolute -bottom-12 -left-12 w-40 h-40 rounded-full border border-dashed border-maroon-800/20 pointer-events-none"></div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-6 text-left">
+          <div>
+            <p class="text-xs font-bold tracking-[0.2em] text-saffron-700 uppercase mb-2">
+              ॐ सुरभ्यै नमः • VEDIC INVOCATION
+            </p>
+            <h2 class="font-serifHindi text-3xl sm:text-4xl font-bold text-maroon-900 leading-snug">
+              गावो विश्वस्य मातरः
+            </h2>
+            <p class="text-sm sm:text-base text-stone-600 mt-1.5" data-i18n="shlokaMeaning">
+              गौमाता सम्पूर्ण विश्व की माता हैं — उनकी सेवा से समस्त सृष्टि का कल्याण होता है।
+            </p>
+          </div>
+
+          <div class="shrink-0 flex flex-col items-center justify-center bg-cream-100 border border-cream-300 rounded-2xl px-6 py-4">
+            <span class="font-serifHindi text-3xl text-maroon-800 font-bold">ॐ</span>
+            <span class="text-[11px] font-bold tracking-[0.22em] text-stone-600 mt-1">GAU MATA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Continuous Sacred Marquee Ticker -->
+    <div class="mt-12 border-y border-cream-300/80 bg-cream-100/80 py-3.5 marquee-wrapper overflow-hidden">
+      <div class="flex whitespace-nowrap animate-marquee w-max">
+        <div class="flex items-center gap-8 px-4 text-sm sm:text-base font-semibold text-maroon-800">
+          <span>ॐ सुरभ्यै नमः</span>
+          <span class="text-saffron-600">✦</span>
+          <span>Gau Raksha</span>
+          <span class="text-saffron-600">✦</span>
+          <span>गौ रक्षा</span>
+          <span class="text-saffron-600">✦</span>
+          <span>गावो विश्वस्य मातरः</span>
+          <span class="text-saffron-600">✦</span>
+          <span>करुणा • Karuna</span>
+          <span class="text-saffron-600">✦</span>
+          <span>Gau Seva Parivar</span>
+          <span class="text-saffron-600">✦</span>
+        </div>
+        <!-- Duplicate for seamless loop -->
+        <div class="flex items-center gap-8 px-4 text-sm sm:text-base font-semibold text-maroon-800" aria-hidden="true">
+          <span>ॐ सुरभ्यै नमः</span>
+          <span class="text-saffron-600">✦</span>
+          <span>Gau Raksha</span>
+          <span class="text-saffron-600">✦</span>
+          <span>गौ रक्षा</span>
+          <span class="text-saffron-600">✦</span>
+          <span>गावो विश्वस्य मातरः</span>
+          <span class="text-saffron-600">✦</span>
+          <span>करुणा • Karuna</span>
+          <span class="text-saffron-600">✦</span>
+          <span>Gau Seva Parivar</span>
+          <span class="text-saffron-600">✦</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 2. हमारा संकल्प (OUR SANKALP / ABOUT SECTION)             -->
+  <!-- ========================================================= -->
+  <section id="sankalp" class="py-16 sm:py-24 bg-cream-100/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        
+        <!-- Left Column: Serene Calf/Cow Image Card (PDF Page 3) -->
+        <div class="lg:col-span-5">
+          <div class="relative rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-forest-700 aspect-[4/4.3] group">
+            <img
+              src="https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=900&q=80"
+              alt="गौमाता और बछड़ा हरियाली में"
+              onerror="this.onerror=null; this.src='https://placehold.co/800x860/2D6A4F/FDFBF7?text=%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%80+%E0%A4%97%E0%A5%8C+%E0%A4%B8%E0%A5%87%E0%A4%B5%E0%A4%BE+%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%B5%E0%A4%BE%E0%A4%B0';"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"></div>
+            <div class="absolute bottom-5 left-5 right-5 text-white">
+              <span class="inline-block bg-saffron-600 text-white text-xs font-bold px-3 py-1 rounded-full mb-2" data-i18n="sankalpBadge">
+                करुणा और समर्पण
+              </span>
+              <p class="font-serifHindi text-lg sm:text-xl leading-snug" data-i18n="sankalpImgCaption">
+                हर निराश्रित गौवंश को प्रेम, पोषण और सम्मानजनक जीवन देना ही हमारा धर्म है।
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Mission Narrative & Impact Counters -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 text-saffron-700 font-bold text-sm tracking-wider uppercase">
+            <span class="w-8 h-0.5 bg-saffron-600 rounded-full"></span>
+            <span data-i18n="sankalpEyebrow">हमारा परिचय एवं उद्देश्य</span>
+          </div>
+
+          <h2 class="font-serifHindi text-3xl sm:text-4xl md:text-5xl font-bold text-maroon-900 leading-tight" data-i18n="sankalpTitle">
+            हमारा संकल्प
+          </h2>
+
+          <p class="text-base sm:text-lg text-stone-700 leading-relaxed" data-i18n="sankalpP1">
+            <strong>श्री गौ सेवा परिवार</strong> केवल एक संस्था नहीं, बल्कि गौभक्तों का एक संवेदनशील परिवार है जो सड़कों पर भटकती निराश्रित, दुर्घटनाग्रस्त, बीमार और वृद्ध गौमाताओं की निस्वार्थ सेवा के लिए समर्पित है।
+          </p>
+
+          <p class="text-base sm:text-lg text-stone-700 leading-relaxed" data-i18n="sankalpP2">
+            हमारा संकल्प है कि किसी भी गौमाता को भूख, प्यास या उपचार के अभाव में कष्ट न सहना पड़े। समाज के सहयोग और पारदर्शी व्यवस्था के माध्यम से प्रत्येक गौवंश को स्वच्छ आवास, ताज़ा हरा चारा और समय पर पशु-चिकित्सा उपलब्ध कराई जाती है।
+          </p>
+
+          <!-- Impact Counters -->
+          <div class="grid grid-cols-3 gap-3 sm:gap-5 pt-4">
+            <div class="bg-white rounded-2xl p-4 sm:p-5 border border-cream-300 shadow-sm text-center">
+              <div class="font-serifHindi text-2xl sm:text-3xl font-bold text-maroon-800">101+</div>
+              <div class="text-xs sm:text-sm font-medium text-stone-600 mt-1" data-i18n="stat1">गौमाता की दैनिक सेवा</div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 sm:p-5 border border-cream-300 shadow-sm text-center">
+              <div class="font-serifHindi text-2xl sm:text-3xl font-bold text-forest-600">365</div>
+              <div class="text-xs sm:text-sm font-medium text-stone-600 mt-1" data-i18n="stat2">दिन निरंतर चारा व जल</div>
+            </div>
+            <div class="bg-white rounded-2xl p-4 sm:p-5 border border-cream-300 shadow-sm text-center">
+              <div class="font-serifHindi text-2xl sm:text-3xl font-bold text-saffron-600">100%</div>
+              <div class="text-xs sm:text-sm font-medium text-stone-600 mt-1" data-i18n="stat3">पारदर्शी गौ सेवा उपयोग</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 3. पंच सेवा (PANCH SEVA - 5 PILLARS OF SERVICE)           -->
+  <!-- ========================================================= -->
+  <section id="panch-seva" class="py-16 sm:py-24 bg-cream-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto mb-14">
+        <span class="inline-block px-4 py-1 rounded-full bg-maroon-800/10 text-maroon-800 text-xs font-bold tracking-wider uppercase mb-3">
+          PANCH SEVA • पंच सेवा
+        </span>
+        <h2 class="font-serifHindi text-3xl sm:text-4xl md:text-5xl font-bold text-maroon-900 mb-4" data-i18n="panchTitle">
+          पंच सेवा
+        </h2>
+        <p class="text-base sm:text-lg text-stone-700 leading-relaxed" data-i18n="panchSubtitle">
+          यह परिवार हर उस व्यक्ति का है जो गौमाता के प्रति करुणा रखता है। आपका हर छोटा योगदान किसी गौमाता के लिए एक पूरा दिन बन जाता है।
+        </p>
+      </div>
+
+      <!-- 5 Interactive Seva Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        
+        <!-- Card 1 -->
+        <div class="group bg-white rounded-3xl p-7 border border-cream-300 shadow-sm hover:shadow-xl hover:border-saffron-500/50 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-forest-600/10 text-forest-700 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              🌾
+            </div>
+            <div class="text-xs font-bold text-saffron-700 uppercase tracking-wider mb-1">सेवा 01</div>
+            <h3 class="font-serifHindi text-xl sm:text-2xl font-bold text-maroon-900 mb-3" data-i18n="seva1Title">
+              हरा चारा एवं पौष्टिक आहार
+            </h3>
+            <p class="text-sm sm:text-base text-stone-600 leading-relaxed" data-i18n="seva1Desc">
+              प्रतिदिन ताज़ा हरा चारा, भूसा, गुड़, खली और पौष्टिक आहार की व्यवस्था ताकि प्रत्येक गौमाता स्वस्थ और ऊर्जावान रहे।
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-cream-200 flex items-center justify-between">
+            <span class="text-xs font-semibold text-forest-700">₹251 से सहयोग प्रारंभ</span>
+            <a href="#daan" onclick="selectSevaPreset('हरा चारा सेवा', 251)" class="text-sm font-bold text-maroon-800 hover:text-saffron-600 inline-flex items-center gap-1" data-i18n="sevaBtn">
+              सेवा चुनें →
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="group bg-white rounded-3xl p-7 border border-cream-300 shadow-sm hover:shadow-xl hover:border-saffron-500/50 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-maroon-800/10 text-maroon-800 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              🩺
+            </div>
+            <div class="text-xs font-bold text-saffron-700 uppercase tracking-wider mb-1">सेवा 02</div>
+            <h3 class="font-serifHindi text-xl sm:text-2xl font-bold text-maroon-900 mb-3" data-i18n="seva2Title">
+              आकस्मिक चिकित्सा एवं उपचार
+            </h3>
+            <p class="text-sm sm:text-base text-stone-600 leading-relaxed" data-i18n="seva2Desc">
+              सड़क दुर्घटना में घायल या बीमार गौवंश के लिए त्वरित प्राथमिक उपचार, दवाइयाँ, मरहम-पट्टी और अनुभवी पशु चिकित्सकों की देखरेख।
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-cream-200 flex items-center justify-between">
+            <span class="text-xs font-semibold text-maroon-800">₹1,100 चिकित्सा निधि</span>
+            <a href="#daan" onclick="selectSevaPreset('चिकित्सा सहायता', 1100)" class="text-sm font-bold text-maroon-800 hover:text-saffron-600 inline-flex items-center gap-1" data-i18n="sevaBtn">
+              सेवा चुनें →
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="group bg-white rounded-3xl p-7 border border-cream-300 shadow-sm hover:shadow-xl hover:border-saffron-500/50 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-saffron-500/15 text-saffron-700 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              🏡
+            </div>
+            <div class="text-xs font-bold text-saffron-700 uppercase tracking-wider mb-1">सेवा 03</div>
+            <h3 class="font-serifHindi text-xl sm:text-2xl font-bold text-maroon-900 mb-3" data-i18n="seva3Title">
+              सुरक्षित आश्रय एवं गौशाला
+            </h3>
+            <p class="text-sm sm:text-base text-stone-600 leading-relaxed" data-i18n="seva3Desc">
+              सर्दी, गर्मी और बरसात से बचाव के लिए हवादार टीन शेड, स्वच्छ पेयजल और शांत प्राकृतिक वातावरण में सुरक्षित आश्रय।
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-cream-200 flex items-center justify-between">
+            <span class="text-xs font-semibold text-saffron-700">₹501 एक दिन का भोजन</span>
+            <a href="#daan" onclick="selectSevaPreset('एक दिन का भोजन एवं आश्रय', 501)" class="text-sm font-bold text-maroon-800 hover:text-saffron-600 inline-flex items-center gap-1" data-i18n="sevaBtn">
+              सेवा चुनें →
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="group bg-white rounded-3xl p-7 border border-cream-300 shadow-sm hover:shadow-xl hover:border-saffron-500/50 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-amber-700/10 text-amber-800 flex items-center justify-center text-2xl mb-5 group-hover:scale-110 transition-transform">
+              🤍
+            </div>
+            <div class="text-xs font-bold text-saffron-700 uppercase tracking-wider mb-1">सेवा 04</div>
+            <h3 class="font-serifHindi text-xl sm:text-2xl font-bold text-maroon-900 mb-3" data-i18n="seva4Title">
+              वृद्ध एवं निराश्रित गौ संरक्षण
+            </h3>
+            <p class="text-sm sm:text-base text-stone-600 leading-relaxed" data-i18n="seva4Desc">
+              दूध देना बंद करने के बाद छोड़ दी गई वृद्ध एवं अशक्त गौमाताओं को आजीवन स्नेह, सम्मान और विशेष देखभाल प्रदान करना।
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-cream-200 flex items-center justify-between">
+            <span class="text-xs font-semibold text-amber-800">₹2,100 मासिक पोषण</span>
+            <a href="#daan" onclick="selectSevaPreset('गौमाता मासिक पोषण', 2100)" class="text-sm font-bold text-maroon-800 hover:text-saffron-600 inline-flex items-center gap-1" data-i18n="sevaBtn">
+              सेवा चुनें →
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 5 (Spans 2 columns on lg for balanced layout) -->
+        <div class="group bg-gradient-to-br from-maroon-900 to-maroon-800 text-cream-50 rounded-3xl p-7 sm:p-8 shadow-lg md:col-span-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div class="space-y-3 max-w-xl">
+            <div class="inline-flex items-center gap-2 bg-white/10 text-saffron-500 text-xs font-bold px-3 py-1 rounded-full">
+              <span>सेवा 05 • GAU RAKSHA & AWARENESS</span>
+            </div>
+            <h3 class="font-serifHindi text-2xl sm:text-3xl font-bold text-white" data-i18n="seva5Title">
+              गौ वंश संवर्धन एवं जन-जागरूकता
+            </h3>
+            <p class="text-sm sm:text-base text-cream-200 leading-relaxed" data-i18n="seva5Desc">
+              भारतीय देशी गौवंश के महत्व, पंचगव्य उपयोग और समाज में गौ-रक्षा के प्रति संवेदनशीलता जगाने हेतु निरंतर अभियान व स्वयंसेवा।
+            </p>
+          </div>
+          <div class="shrink-0 w-full sm:w-auto">
+            <a href="#sampark" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-saffron-500 hover:bg-saffron-600 text-maroon-900 font-bold px-6 py-3.5 rounded-full shadow-md transition-all" data-i18n="joinVolunteer">
+              स्वयंसेवक बनें →
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 4. दान (DAAN - INTERACTIVE UPI DONATION SECTION)           -->
+  <!-- ========================================================= -->
+  <section id="daan" class="py-16 sm:py-24 bg-cream-100 border-y border-cream-300/80">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Header -->
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <div class="inline-flex items-center gap-2 bg-white border border-saffron-500/40 px-4 py-1 rounded-full text-xs font-bold tracking-[0.2em] text-maroon-800 uppercase mb-3">
+          <span>दान • DAAN</span>
+        </div>
+        <h2 class="font-serifHindi text-3xl sm:text-5xl font-bold text-maroon-900 mb-3" data-i18n="daanTitle">
+          गौ सेवा में सहयोग करें
+        </h2>
+        <p class="text-base sm:text-lg text-stone-700" data-i18n="daanSubtitle">
+          राशि और सेवा चुनें, फिर किसी भी UPI ऐप से QR स्कैन करें।
+        </p>
+      </div>
+
+      <!-- Interactive Donation Card -->
+      <div class="bg-white rounded-3xl shadow-xl border border-cream-300 overflow-hidden grid grid-cols-1 lg:grid-cols-12">
+        
+        <!-- Left Side: Seva & Amount Selector -->
+        <div class="lg:col-span-7 p-6 sm:p-10 space-y-7">
+          
+          <!-- Step 1: Select Seva Category -->
+          <div>
+            <label class="block text-sm font-bold text-maroon-900 mb-3" data-i18n="step1Label">
+              1. सेवा का प्रकार चुनें:
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="seva-options">
+              <button type="button" onclick="selectSevaPreset('हरा चारा सेवा', 251, this)" class="seva-option-btn active text-left p-3.5 rounded-2xl border-2 border-maroon-800 bg-maroon-800/5 transition-all">
+                <div class="font-bold text-maroon-900 text-sm">🌾 हरा चारा सेवा</div>
+                <div class="text-xs text-stone-600 mt-0.5">गौमाताओं हेतु ताज़ा चारा (₹251)</div>
+              </button>
+
+              <button type="button" onclick="selectSevaPreset('एक दिन का भोजन', 501, this)" class="seva-option-btn text-left p-3.5 rounded-2xl border-2 border-cream-300 hover:border-saffron-500 transition-all">
+                <div class="font-bold text-stone-800 text-sm">🥣 एक दिन का पूर्ण भोजन</div>
+                <div class="text-xs text-stone-600 mt-0.5">चारा, गुड़ एवं दाना सेवा (₹501)</div>
+              </button>
+
+              <button type="button" onclick="selectSevaPreset('चिकित्सा सहायता', 1100, this)" class="seva-option-btn text-left p-3.5 rounded-2xl border-2 border-cream-300 hover:border-saffron-500 transition-all">
+                <div class="font-bold text-stone-800 text-sm">🩺 चिकित्सा सहायता</div>
+                <div class="text-xs text-stone-600 mt-0.5">बीमार गौवंश औषधि एवं उपचार (₹1,100)</div>
+              </button>
+
+              <button type="button" onclick="selectSevaPreset('गौमाता मासिक पोषण', 2100, this)" class="seva-option-btn text-left p-3.5 rounded-2xl border-2 border-cream-300 hover:border-saffron-500 transition-all">
+                <div class="font-bold text-stone-800 text-sm">🐄 गौमाता मासिक पोषण</div>
+                <div class="text-xs text-stone-600 mt-0.5">एक गौमाता का संपूर्ण माह पोषण (₹2,100)</div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 2: Select or Enter Custom Amount -->
+          <div>
+            <label class="block text-sm font-bold text-maroon-900 mb-3" data-i18n="step2Label">
+              2. सहयोग राशि चुनें या दर्ज करें (₹):
+            </label>
+            <div class="grid grid-cols-3 sm:grid-cols-6 gap-2.5 mb-3">
+              <button type="button" onclick="setAmount(101)" class="amt-btn py-2.5 px-2 rounded-xl border border-cream-300 font-bold text-sm text-stone-800 hover:border-maroon-800 transition-all" data-amt="101">₹101</button>
+              <button type="button" onclick="setAmount(251)" class="amt-btn py-2.5 px-2 rounded-xl border-2 border-maroon-800 bg-maroon-800 text-white font-bold text-sm transition-all" data-amt="251">₹251</button>
+              <button type="button" onclick="setAmount(501)" class="amt-btn py-2.5 px-2 rounded-xl border border-cream-300 font-bold text-sm text-stone-800 hover:border-maroon-800 transition-all" data-amt="501">₹501</button>
+              <button type="button" onclick="setAmount(1100)" class="amt-btn py-2.5 px-2 rounded-xl border border-cream-300 font-bold text-sm text-stone-800 hover:border-maroon-800 transition-all" data-amt="1100">₹1,100</button>
+              <button type="button" onclick="setAmount(2100)" class="amt-btn py-2.5 px-2 rounded-xl border border-cream-300 font-bold text-sm text-stone-800 hover:border-maroon-800 transition-all" data-amt="2100">₹2,100</button>
+              <button type="button" onclick="setAmount(5100)" class="amt-btn py-2.5 px-2 rounded-xl border border-cream-300 font-bold text-sm text-stone-800 hover:border-maroon-800 transition-all" data-amt="5100">₹5,100</button>
+            </div>
+
+            <div class="relative">
+              <span class="absolute left-4 top-1/2 -translate-y-1/2 text-lg font-bold text-maroon-800">₹</span>
+              <input
+                type="number"
+                id="custom-amount"
+                min="1"
+                value="251"
+                oninput="handleCustomAmount(this.value)"
+                placeholder="अन्य राशि लिखें (जैसे 1500)"
+                class="w-full pl-9 pr-4 py-3 rounded-2xl bg-cream-50 border border-cream-300 focus:border-maroon-800 focus:ring-2 focus:ring-maroon-800/15 outline-none font-bold text-lg text-maroon-900"
+              />
+            </div>
+          </div>
+
+          <!-- Donor Optional Name -->
+          <div>
+            <label for="donor-name" class="block text-xs font-semibold text-stone-600 mb-1.5" data-i18n="donorNameLabel">
+              आपका शुभ नाम (रसीद / WhatsApp सूचना हेतु - वैकल्पिक)
+            </label>
+            <input
+              type="text"
+              id="donor-name"
+              placeholder="उदा. श्री राजेश शर्मा"
+              class="w-full px-4 py-2.5 rounded-xl bg-cream-50 border border-cream-300 focus:border-maroon-800 outline-none text-sm text-stone-800"
+            />
+          </div>
+        </div>
+
+        <!-- Right Side: Dynamic UPI QR Code Card -->
+        <div class="lg:col-span-5 bg-gradient-to-b from-cream-100 to-cream-200/70 p-6 sm:p-10 border-t lg:border-t-0 lg:border-l border-cream-300 flex flex-col items-center justify-center text-center">
+          
+          <div class="inline-flex items-center gap-1.5 bg-white px-3.5 py-1 rounded-full border border-cream-300 text-xs font-bold text-maroon-800 mb-3 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-forest-600"></span>
+            <span id="qr-selected-seva">हरा चारा सेवा</span> • <span id="qr-selected-amt" class="text-forest-700">₹251</span>
+          </div>
+
+          <!-- QR Code Container -->
+          <div class="bg-white p-4 rounded-3xl shadow-md border-2 border-saffron-500/40 mb-4 relative">
+            <img
+              id="upi-qr-img"
+              src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=upi%3A%2F%2Fpay%3Fpa%3D8306865537%40upi%26pn%3DShri%2520Gau%2520Seva%2520Parivar%26am%3D251%26cu%3DINR%26tn%3DGau%2520Seva"
+              alt="UPI QR Code - Shri Gau Seva Parivar"
+              class="w-44 h-44 sm:w-48 sm:h-48 rounded-xl object-contain"
+            />
+          </div>
+
+          <!-- UPI ID Copy Box -->
+          <div class="w-full max-w-xs bg-white rounded-2xl px-3.5 py-2.5 border border-cream-300 flex items-center justify-between gap-2 mb-4 shadow-sm">
+            <div class="text-left truncate">
+              <div class="text-[10px] font-semibold text-stone-500 uppercase">UPI ID / Mobile</div>
+              <div id="upi-id-text" class="text-xs sm:text-sm font-bold text-maroon-900 truncate">8306865537@upi</div>
+            </div>
+            <button type="button" onclick="copyText('8306865537@upi', 'UPI ID कॉपी हो गई है')" class="shrink-0 px-3 py-1.5 rounded-xl bg-cream-200 hover:bg-maroon-800 hover:text-white text-maroon-900 text-xs font-bold transition-colors">
+              कॉपी करें
+            </button>
+          </div>
+
+          <!-- Supported UPI Apps Badges -->
+          <div class="flex items-center justify-center gap-2 text-[11px] font-bold text-stone-600 mb-5">
+            <span class="px-2.5 py-1 rounded-lg bg-white border border-cream-300">GPay</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white border border-cream-300">PhonePe</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white border border-cream-300">Paytm</span>
+            <span class="px-2.5 py-1 rounded-lg bg-white border border-cream-300">BHIM</span>
+          </div>
+
+          <!-- Confirm on WhatsApp CTA -->
+          <button type="button" onclick="confirmDonationOnWhatsApp()" class="w-full max-w-xs inline-flex items-center justify-center gap-2 bg-forest-600 hover:bg-forest-700 text-white font-bold text-sm py-3.5 px-5 rounded-full shadow-md hover:shadow-lg transition-all">
+            <span>✅</span>
+            <span data-i18n="confirmWaBtn">मैंने दान कर दिया (WhatsApp सूचना)</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 5. गौशाला की झलक (GAUSHALA GALLERY & PEACE QUOTE)        -->
+  <!-- ========================================================= -->
+  <section id="jhalak" class="py-16 sm:py-24 bg-cream-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Poetic Banner (PDF Page 7 & 8: "गौशाला की झलक" & "शांति, स्नेह और सेवा") -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="text-xs font-bold tracking-[0.2em] text-saffron-700 uppercase block mb-2">
+            GAUSHALA GLIMPSES • पावन दर्शन
+          </span>
+          <h2 class="font-serifHindi text-3xl sm:text-4xl md:text-5xl font-bold text-maroon-900" data-i18n="galleryTitle">
+            गौशाला की झलक
+          </h2>
+        </div>
+
+        <div class="bg-cream-100 border border-saffron-500/40 rounded-2xl px-6 py-4 shadow-sm">
+          <p class="font-serifHindi text-2xl sm:text-3xl font-bold text-maroon-800" data-i18n="peaceQuote">
+            “शांति, स्नेह और सेवा”
+          </p>
+        </div>
+      </div>
+
+      <!-- Responsive Gallery Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        
+        <!-- Gallery Item 1 -->
+        <div onclick="openLightbox('https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?auto=format&fit=crop&w=1000&q=80', 'प्रातःकालीन गौ सेवा एवं हरा चारा')"
+             class="group relative rounded-3xl overflow-hidden aspect-[4/4.5] cursor-pointer shadow-md border border-cream-300 bg-cream-200">
+          <img
+            src="https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?auto=format&fit=crop&w=700&q=80"
+            alt="प्रातःकालीन गौ सेवा"
+            onerror="this.onerror=null; this.src='https://placehold.co/600x680/8B261D/FDFBF7?text=%E0%A4%97%E0%A5%8C+%E0%A4%B8%E0%A5%87%E0%A4%B5%E0%A4%BE';"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-4 left-4 right-4 text-white">
+            <span class="text-xs text-saffron-400 font-semibold">01 • पोषण</span>
+            <h3 class="font-serifHindi text-lg font-bold">प्रातःकालीन हरा चारा सेवा</h3>
+          </div>
+        </div>
+
+        <!-- Gallery Item 2 -->
+        <div onclick="openLightbox('https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=1000&q=80', 'हरियाली और शांत प्राकृतिक आश्रय')"
+             class="group relative rounded-3xl overflow-hidden aspect-[4/4.5] cursor-pointer shadow-md border border-cream-300 bg-cream-200">
+          <img
+            src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=700&q=80"
+            alt="शांत प्राकृतिक आश्रय"
+            onerror="this.onerror=null; this.src='https://placehold.co/600x680/2D6A4F/FDFBF7?text=%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%95%E0%A5%83%E0%A4%A4%E0%A4%BF%E0%A4%95+%E0%A4%86%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A4%AF';"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-4 left-4 right-4 text-white">
+            <span class="text-xs text-saffron-400 font-semibold">02 • आश्रय</span>
+            <h3 class="font-serifHindi text-lg font-bold">शांत प्राकृतिक वातावरण</h3>
+          </div>
+        </div>
+
+        <!-- Gallery Item 3 -->
+        <div onclick="openLightbox('https://images.unsplash.com/photo-1596733430284-f7437764b1a9?auto=format&fit=crop&w=1000&q=80', 'नवजात बछड़ों का वात्सल्य एवं देखभाल')"
+             class="group relative rounded-3xl overflow-hidden aspect-[4/4.5] cursor-pointer shadow-md border border-cream-300 bg-cream-200">
+          <img
+            src="https://images.unsplash.com/photo-1596733430284-f7437764b1a9?auto=format&fit=crop&w=700&q=80"
+            alt="बछड़ों की देखभाल"
+            onerror="this.onerror=null; this.src='https://placehold.co/600x680/D97706/FDFBF7?text=%E0%A4%B5%E0%A4%BE%E0%A4%A4%E0%A5%8D%E0%A4%B8%E0%A4%B2%E0%A5%8D%E0%A4%AF+%E0%A4%B8%E0%A5%87%E0%A4%B5%E0%A4%BE';"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-4 left-4 right-4 text-white">
+            <span class="text-xs text-saffron-400 font-semibold">03 • स्नेह</span>
+            <h3 class="font-serifHindi text-lg font-bold">बछड़ों का वात्सल्य व संरक्षण</h3>
+          </div>
+        </div>
+
+        <!-- Gallery Item 4 -->
+        <div onclick="openLightbox('https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?auto=format&fit=crop&w=1000&q=80', 'निरंतर सेवा और करुणा का संकल्प')"
+             class="group relative rounded-3xl overflow-hidden aspect-[4/4.5] cursor-pointer shadow-md border border-cream-300 bg-cream-200">
+          <img
+            src="https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?auto=format&fit=crop&w=700&q=80"
+            alt="करुणा और सेवा"
+            onerror="this.onerror=null; this.src='https://placehold.co/600x680/5E1812/FDFBF7?text=%E0%A4%B6%E0%A4%BE%E0%A4%82%E0%A4%A4%E0%A4%BF+%E0%A4%B8%E0%A5%8D%E0%A4%A8%E0%A5%87%E0%A4%B9+%E0%A4%B8%E0%A5%87%E0%A4%B5%E0%A4%BE';"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-90"></div>
+          <div class="absolute bottom-4 left-4 right-4 text-white">
+            <span class="text-xs text-saffron-400 font-semibold">04 • समर्पण</span>
+            <h3 class="font-serifHindi text-lg font-bold">निरंतर सेवा और करुणा</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal for Gallery -->
+  <div id="lightbox-modal" onclick="closeLightbox()" class="fixed inset-0 z-50 hidden bg-black/85 backdrop-blur-sm items-center justify-center p-4">
+    <div onclick="event.stopPropagation()" class="relative max-w-3xl w-full bg-cream-50 rounded-3xl overflow-hidden shadow-2xl border border-cream-300">
+      <button onclick="closeLightbox()" class="absolute top-3 right-3 z-10 w-10 h-10 rounded-full bg-black/60 text-white hover:bg-maroon-800 flex items-center justify-center text-xl transition-colors" aria-label="Close">
+        ✕
+      </button>
+      <img id="lightbox-img" src="" alt="Gallery Preview" class="w-full max-h-[75vh] object-cover" />
+      <div class="p-4 sm:p-5 text-center bg-cream-50">
+        <p id="lightbox-caption" class="font-serifHindi text-lg sm:text-xl font-bold text-maroon-900"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================= -->
+  <!-- 6. संपर्क (CONTACT SECTION - PDF Page 13)                 -->
+  <!-- ========================================================= -->
+  <section id="sampark" class="py-16 sm:py-24 bg-cream-100/70 border-t border-cream-300/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <!-- Left: Direct Contact Info Cards -->
+        <div class="lg:col-span-5 space-y-6">
+          <div class="inline-flex items-center gap-2 text-saffron-700 font-bold text-xs tracking-[0.2em] uppercase">
+            <span>SAMPARK • जुड़ें</span>
+          </div>
+          <h2 class="font-serifHindi text-3xl sm:text-4xl md:text-5xl font-bold text-maroon-900" data-i18n="contactTitle">
+            संपर्क
+          </h2>
+          <p class="text-base sm:text-lg text-stone-700 leading-relaxed" data-i18n="contactSub">
+            दान, स्वयंसेवा या गौशाला दर्शन — कुछ भी पूछना हो, सीधे WhatsApp या ईमेल करें।
+          </p>
+
+          <!-- WhatsApp / Phone Card -->
+          <div class="bg-white rounded-2xl p-5 border border-cream-300 shadow-sm flex items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 rounded-2xl bg-forest-600/10 text-forest-700 flex items-center justify-center text-xl shrink-0">
+                📞
+              </div>
+              <div>
+                <div class="text-xs font-semibold text-stone-500">WhatsApp एवं दूरभाष</div>
+                <a href="tel:+918306865537" class="text-lg font-bold text-maroon-900 hover:text-forest-700 transition-colors">
+                  +91 8306865537
+                </a>
+              </div>
+            </div>
+            <a href="https://wa.me/918306865537" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-full bg-forest-600 hover:bg-forest-700 text-white text-xs font-bold transition-colors">
+              WhatsApp
+            </a>
+          </div>
+
+          <!-- Email Card -->
+          <div class="bg-white rounded-2xl p-5 border border-cream-300 shadow-sm flex items-center justify-between gap-4">
+            <div class="flex items-center gap-4 min-w-0">
+              <div class="w-12 h-12 rounded-2xl bg-saffron-500/15 text-saffron-700 flex items-center justify-center text-xl shrink-0">
+                ✉️
+              </div>
+              <div class="min-w-0">
+                <div class="text-xs font-semibold text-stone-500">आधिकारिक ईमेल</div>
+                <a href="mailto:shrigausevaparivar@gmail.com" class="text-sm sm:text-base font-bold text-maroon-900 hover:text-saffron-700 truncate block">
+                  shrigausevaparivar@gmail.com
+                </a>
+              </div>
+            </div>
+            <button type="button" onclick="copyText('shrigausevaparivar@gmail.com', 'ईमेल पता कॉपी हो गया है')" class="shrink-0 px-3.5 py-2 rounded-full bg-cream-200 hover:bg-maroon-800 hover:text-white text-maroon-900 text-xs font-bold transition-colors">
+              कॉपी
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Quick Inquiry Form -->
+        <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-10 border border-cream-300 shadow-lg">
+          <h3 class="font-serifHindi text-2xl font-bold text-maroon-900 mb-2" data-i18n="formHeading">
+            सीधा संदेश भेजें
+          </h3>
+          <p class="text-sm text-stone-600 mb-6" data-i18n="formSub">
+            अपना विवरण भरें — आपका संदेश सीधे हमारे सेवा परिवार के WhatsApp पर खुल जाएगा।
+          </p>
+
+          <form onsubmit="submitInquiryForm(event)" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1.5" data-i18n="formName">आपका नाम *</label>
+                <input type="text" id="inq-name" required placeholder="अपना नाम लिखें" class="w-full px-4 py-3 rounded-xl bg-cream-50 border border-cream-300 focus:border-maroon-800 outline-none text-sm" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-stone-700 mb-1.5" data-i18n="formPhone">मोबाइल नंबर *</label>
+                <input type="tel" id="inq-phone" required placeholder="+91 98XXXXXXXX" class="w-full px-4 py-3 rounded-xl bg-cream-50 border border-cream-300 focus:border-maroon-800 outline-none text-sm" />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-700 mb-1.5" data-i18n="formTopic">विषय चुनें</label>
+              <select id="inq-topic" class="w-full px-4 py-3 rounded-xl bg-cream-50 border border-cream-300 focus:border-maroon-800 outline-none text-sm font-medium text-stone-800">
+                <option value="गौ सेवा दान एवं रसीद">गौ सेवा दान एवं रसीद</option>
+                <option value="स्वयंसेवा (Volunteer)">स्वयंसेवा (Volunteer)</option>
+                <option value="गौशाला दर्शन">गौशाला दर्शन</option>
+                <option value="बीमार गौवंश सूचना">बीमार / घायल गौवंश सूचना</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-700 mb-1.5" data-i18n="formMsg">आपका संदेश *</label>
+              <textarea id="inq-msg" rows="3" required placeholder="यहाँ अपना संदेश या प्रश्न लिखें..." class="w-full px-4 py-3 rounded-xl bg-cream-50 border border-cream-300 focus:border-maroon-800 outline-none text-sm"></textarea>
+            </div>
+
+            <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-maroon-800 hover:bg-maroon-900 text-cream-50 font-bold px-8 py-3.5 rounded-full shadow-md hover:shadow-lg transition-all">
+              <span data-i18n="formSubmit">WhatsApp पर संदेश भेजें →</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================= -->
+  <!-- 7. FOOTER (PDF Page 15)                                   -->
+  <!-- ========================================================= -->
+  <footer class="bg-maroon-900 text-cream-100 pt-14 pb-24 sm:pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-white/15">
+        
+        <!-- Brand & Shloka -->
+        <div class="md:col-span-6 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-saffron-500/20 border border-saffron-500/40 flex items-center justify-center font-serifHindi text-2xl text-saffron-500 font-bold">
+              ॐ
+            </div>
+            <div>
+              <h3 class="font-serifHindi text-2xl font-bold text-white">श्री गौ सेवा परिवार</h3>
+              <p class="text-xs text-saffron-500 tracking-wider uppercase">Shri Gau Seva Parivar</p>
+            </div>
+          </div>
+
+          <p class="font-serifHindi text-xl text-saffron-400 pt-1">
+            गावो विश्वस्य मातरः
+          </p>
+          <p class="text-sm text-cream-200/90 max-w-md leading-relaxed" data-i18n="footerDesc">
+            गाय सम्पूर्ण विश्व की माता है। आपके दान का हर रुपया पूर्ण पारदर्शिता के साथ गौ सेवा, चारा, चिकित्सा और आश्रय में लगता है।
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="md:col-span-3 space-y-3">
+          <h4 class="text-sm font-bold text-saffron-500 uppercase tracking-wider">त्वरित लिंक</h4>
+          <ul class="space-y-2 text-sm text-cream-200">
+            <li><a href="#sankalp" class="hover:text-white transition-colors" data-i18n="navAbout">परिचय</a></li>
+            <li><a href="#panch-seva" class="hover:text-white transition-colors" data-i18n="navSeva">सेवा</a></li>
+            <li><a href="#daan" class="hover:text-white transition-colors" data-i18n="navDaan">दान</a></li>
+            <li><a href="#jhalak" class="hover:text-white transition-colors" data-i18n="navGallery">झलक</a></li>
+            <li><a href="#sampark" class="hover:text-white transition-colors" data-i18n="navContact">संपर्क</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Details -->
+        <div class="md:col-span-3 space-y-3">
+          <h4 class="text-sm font-bold text-saffron-500 uppercase tracking-wider">संपर्क सूत्र</h4>
+          <ul class="space-y-2.5 text-sm text-cream-200">
+            <li>
+              <a href="tel:+918306865537" class="hover:text-white flex items-center gap-2">
+                <span>📞</span>
+                <span>+91 8306865537</span>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:shrigausevaparivar@gmail.com" class="hover:text-white flex items-center gap-2 break-all">
+                <span>✉️</span>
+                <span>shrigausevaparivar@gmail.com</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Copyright Bar -->
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-cream-200/80">
+        <p>© 2026 Shri Gau Seva Parivar सर्वाधिकार सुरक्षित</p>
+        <p class="font-serifHindi text-base font-bold text-saffron-400">॥ जय गौमाता ॥</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Bottom-Right WhatsApp Button ("बात करें") -->
+  <a href="https://wa.me/918306865537?text=%E0%A4%9C%E0%A4%AF%20%E0%A4%97%E0%A5%8C%E0%A4%AE%E0%A4%BE%E0%A4%A4%E0%A4%BE!%20%E0%A4%AE%E0%A5%88%E0%A4%82%20%E0%A4%B6%E0%A5%8D%E0%A4%B0%E0%A5%80%20%E0%A4%97%E0%A5%8C%20%E0%A4%B8%E0%A5%87%E0%A4%B5%E0%A4%BE%20%E0%A4%AA%E0%A4%B0%E0%A4%BF%E0%A4%B5%E0%A4%BE%E0%A4%B0%20%E0%A4%B8%E0%A5%87%20%E0%A4%AC%E0%A4%BE%E0%A4%A4%20%E0%A4%95%E0%A4%B0%E0%A4%A8%E0%A4%BE%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A4%BE/%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%A4%E0%A5%80%20%E0%A4%B9%E0%A5%82%E0%A4%81%E0%A5%A4"
+     target="_blank" rel="noopener noreferrer"
+     class="fixed bottom-5 right-5 z-40 inline-flex items-center gap-2.5 bg-forest-600 hover:bg-forest-700 text-white font-bold text-sm px-5 py-3.5 rounded-full shadow-xl shadow-forest-700/30 hover:scale-105 transition-all animate-float">
+    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+      <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/>
+    </svg>
+    <span data-i18n="floatChat">बात करें</span>
+  </a>
+
+  <!-- ========================================================= -->
+  <!-- JAVASCRIPT LOGIC: Bilingual Toggle, Dynamic QR, Lightbox  -->
+  <!-- ========================================================= -->
+  <script>
+    // State variables for Donation & Language
+    let currentLang = 'hi';
+    let selectedSeva = 'हरा चारा सेवा';
+    let selectedAmount = 251;
+
+    // Bilingual Dictionary (Hindi & English)
+    const translations = {
+      hi: {
+        brandName: 'श्री गौ सेवा परिवार',
+        navAbout: 'परिचय',
+        navSeva: 'सेवा',
+        navDaan: 'दान',
+        navGallery: 'झलक',
+        navContact: 'संपर्क',
+        navChat: 'बात करें',
+        pill1: 'गौ सेवा',
+        pill2: 'गौ रक्षा',
+        pill3: 'गौ सम्मान',
+        heroTitle: 'गौ सेवा ही सच्ची ईश्वर सेवा है।',
+        heroSub: 'निराश्रित, बीमार और वृद्ध गौमाताओं के लिए चारा, चिकित्सा और सुरक्षित आश्रय – आपके सहयोग से, हर दिन।',
+        hl1: 'हरा चारा',
+        hl2: 'चिकित्सा',
+        hl3: 'आश्रय',
+        ctaDonate: 'गौ सेवा में दान करें',
+        ctaWhatsapp: 'WhatsApp पर बात करें',
+        shlokaMeaning: 'गौमाता सम्पूर्ण विश्व की माता हैं — उनकी सेवा से समस्त सृष्टि का कल्याण होता है।',
+        sankalpBadge: 'करुणा और समर्पण',
+        sankalpImgCaption: 'हर निराश्रित गौवंश को प्रेम, पोषण और सम्मानजनक जीवन देना ही हमारा धर्म है।',
+        sankalpEyebrow: 'हमारा परिचय एवं उद्देश्य',
+        sankalpTitle: 'हमारा संकल्प',
+        sankalpP1: 'श्री गौ सेवा परिवार केवल एक संस्था नहीं, बल्कि गौभक्तों का एक संवेदनशील परिवार है जो सड़कों पर भटकती निराश्रित, दुर्घटनाग्रस्त, बीमार और वृद्ध गौमाताओं की निस्वार्थ सेवा के लिए समर्पित है।',
+        sankalpP2: 'हमारा संकल्प है कि किसी भी गौमाता को भूख, प्यास या उपचार के अभाव में कष्ट न सहना पड़े। समाज के सहयोग और पारदर्शी व्यवस्था के माध्यम से प्रत्येक गौवंश को स्वच्छ आवास, ताज़ा हरा चारा और समय पर पशु-चिकित्सा उपलब्ध कराई जाती है।',
+        stat1: 'गौमाता की दैनिक सेवा',
+        stat2: 'दिन निरंतर चारा व जल',
+        stat3: 'पारदर्शी गौ सेवा उपयोग',
+        panchTitle: 'पंच सेवा',
+        panchSubtitle: 'यह परिवार हर उस व्यक्ति का है जो गौमाता के प्रति करुणा रखता है। आपका हर छोटा योगदान किसी गौमाता के लिए एक पूरा दिन बन जाता है।',
+        seva1Title: 'हरा चारा एवं पौष्टिक आहार',
+        seva1Desc: 'प्रतिदिन ताज़ा हरा चारा, भूसा, गुड़, खली और पौष्टिक आहार की व्यवस्था ताकि प्रत्येक गौमाता स्वस्थ और ऊर्जावान रहे।',
+        seva2Title: 'आकस्मिक चिकित्सा एवं उपचार',
+        seva2Desc: 'सड़क दुर्घटना में घायल या बीमार गौवंश के लिए त्वरित प्राथमिक उपचार, दवाइयाँ, मरहम-पट्टी और अनुभवी पशु चिकित्सकों की देखरेख।',
+        seva3Title: 'सुरक्षित आश्रय एवं गौशाला',
+        seva3Desc: 'सर्दी, गर्मी और बरसात से बचाव के लिए हवादार टीन शेड, स्वच्छ पेयजल और शांत प्राकृतिक वातावरण में सुरक्षित आश्रय।',
+        seva4Title: 'वृद्ध एवं निराश्रित गौ संरक्षण',
+        seva4Desc: 'दूध देना बंद करने के बाद छोड़ दी गई वृद्ध एवं अशक्त गौमाताओं को आजीवन स्नेह, सम्मान और विशेष देखभाल प्रदान करना।',
+        seva5Title: 'गौ वंश संवर्धन एवं जन-जागरूकता',
+        seva5Desc: 'भारतीय देशी गौवंश के महत्व, पंचगव्य उपयोग और समाज में गौ-रक्षा के प्रति संवेदनशीलता जगाने हेतु निरंतर अभियान व स्वयंसेवा।',
+        sevaBtn: 'सेवा चुनें →',
+        joinVolunteer: 'स्वयंसेवक बनें →',
+        daanTitle: 'गौ सेवा में सहयोग करें',
+        daanSubtitle: 'राशि और सेवा चुनें, फिर किसी भी UPI ऐप से QR स्कैन करें।',
+        step1Label: '1. सेवा का प्रकार चुनें:',
+        step2Label: '2. सहयोग राशि चुनें या दर्ज करें (₹):',
+        donorNameLabel: 'आपका शुभ नाम (रसीद / WhatsApp सूचना हेतु - वैकल्पिक)',
+        confirmWaBtn: 'मैंने दान कर दिया (WhatsApp सूचना)',
+        galleryTitle: 'गौशाला की झलक',
+        peaceQuote: '“शांति, स्नेह और सेवा”',
+        contactTitle: 'संपर्क',
+        contactSub: 'दान, स्वयंसेवा या गौशाला दर्शन — कुछ भी पूछना हो, सीधे WhatsApp या ईमेल करें।',
+        formHeading: 'सीधा संदेश भेजें',
+        formSub: 'अपना विवरण भरें — आपका संदेश सीधे हमारे सेवा परिवार के WhatsApp पर खुल जाएगा।',
+        formName: 'आपका नाम *',
+        formPhone: 'मोबाइल नंबर *',
+        formTopic: 'विषय चुनें',
+        formMsg: 'आपका संदेश *',
+        formSubmit: 'WhatsApp पर संदेश भेजें →',
+        footerDesc: 'गाय सम्पूर्ण विश्व की माता है। आपके दान का हर रुपया पूर्ण पारदर्शिता के साथ गौ सेवा, चारा, चिकित्सा और आश्रय में लगता है।',
+        floatChat: 'बात करें'
+      },
+      en: {
+        brandName: 'Shri Gau Seva Parivar',
+        navAbout: 'About',
+        navSeva: 'Seva',
+        navDaan: 'Donate',
+        navGallery: 'Gallery',
+        navContact: 'Contact',
+        navChat: 'Chat Now',
+        pill1: 'Gau Seva',
+        pill2: 'Gau Raksha',
+        pill3: 'Gau Samman',
+        heroTitle: 'Serving Gau Mata is True Service to the Divine.',
+        heroSub: 'Daily green fodder, veterinary care, and safe shelter for abandoned, injured, and elderly cows — made possible through your compassion.',
+        hl1: 'Green Fodder',
+        hl2: 'Medical Care',
+        hl3: 'Safe Shelter',
+        ctaDonate: 'Donate for Gau Seva',
+        ctaWhatsapp: 'Chat on WhatsApp',
+        shlokaMeaning: 'Gau Mata is the nurturing mother of the entire universe — serving her brings peace and prosperity to all.',
+        sankalpBadge: 'Compassion & Devotion',
+        sankalpImgCaption: 'Providing love, nourishment, and a dignified shelter to every abandoned cow is our sacred duty.',
+        sankalpEyebrow: 'OUR MISSION & PURPOSE',
+        sankalpTitle: 'Our Sankalp (Resolve)',
+        sankalpP1: 'Shri Gau Seva Parivar is a compassionate family of Gau-sevaks dedicated to rescuing, feeding, and healing abandoned, injured, and elderly cows in need.',
+        sankalpP2: 'Our resolve is that no Gau Mata suffers from hunger, thirst, or lack of medical care. With community support and full transparency, we ensure clean shelter, fresh fodder, and timely treatment.',
+        stat1: 'Cows Cared For Daily',
+        stat2: 'Days Uninterrupted Seva',
+        stat3: 'Transparent Seva Utilization',
+        panchTitle: 'Panch Seva (Five Pillars)',
+        panchSubtitle: 'This family belongs to everyone who holds compassion for Gau Mata. Every small contribution becomes a full day of nourishment and care for a cow.',
+        seva1Title: 'Green Fodder & Nutrition',
+        seva1Desc: 'Daily supply of fresh green fodder, dry husk, jaggery, and nutritious feed to keep every cow healthy and strong.',
+        seva2Title: 'Emergency Medical Treatment',
+        seva2Desc: 'Prompt first-aid, medicines, wound dressing, and veterinary supervision for injured or sick cows.',
+        seva3Title: 'Safe Shelter & Gaushala',
+        seva3Desc: 'Well-ventilated sheds protecting from extreme weather, clean drinking water, and a peaceful natural sanctuary.',
+        seva4Title: 'Elderly & Abandoned Cow Care',
+        seva4Desc: 'Lifelong affection, dignity, and specialized care for elderly cows abandoned after they stop giving milk.',
+        seva5Title: 'Gau Raksha & Community Awareness',
+        seva5Desc: 'Spreading awareness about indigenous cows, Panchagavya, and inspiring youth to join hands in Gau Seva.',
+        sevaBtn: 'Select Seva →',
+        joinVolunteer: 'Become a Volunteer →',
+        daanTitle: 'Contribute to Gau Seva (Daan)',
+        daanSubtitle: 'Choose a Seva and amount, then scan the dynamic QR code using any UPI app.',
+        step1Label: '1. Choose Seva Category:',
+        step2Label: '2. Select or Enter Amount (₹):',
+        donorNameLabel: 'Your Auspicious Name (For WhatsApp Acknowledgement - Optional)',
+        confirmWaBtn: 'I Have Donated (Notify on WhatsApp)',
+        galleryTitle: 'Gaushala Glimpses',
+        peaceQuote: '“Peace, Affection, and Seva”',
+        contactTitle: 'Contact Us',
+        contactSub: 'For donations, volunteering, or Gaushala visits — reach out directly via WhatsApp or Email.',
+        formHeading: 'Send a Direct Message',
+        formSub: 'Fill in your details below — your message will open directly on our official WhatsApp.',
+        formName: 'Your Name *',
+        formPhone: 'Mobile Number *',
+        formTopic: 'Select Topic',
+        formMsg: 'Your Message *',
+        formSubmit: 'Send via WhatsApp →',
+        footerDesc: 'Gau Mata is the mother of the universe. Every rupee you donate goes directly towards fodder, medical care, and shelter.',
+        floatChat: 'Chat'
+      }
+    };
+
+    // Switch Language between Hindi ('hi') and English ('en')
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+
+      const btnHi = document.getElementById('btn-lang-hi');
+      const btnEn = document.getElementById('btn-lang-en');
+
+      if (lang === 'hi') {
+        btnHi.className = 'px-2.5 py-1 rounded-full text-xs font-bold transition-all bg-maroon-800 text-cream-50 shadow-sm';
+        btnEn.className = 'px-2.5 py-1 rounded-full text-xs font-bold transition-all text-stone-700 hover:text-maroon-800';
+      } else {
+        btnEn.className = 'px-2.5 py-1 rounded-full text-xs font-bold transition-all bg-maroon-800 text-cream-50 shadow-sm';
+        btnHi.className = 'px-2.5 py-1 rounded-full text-xs font-bold transition-all text-stone-700 hover:text-maroon-800';
+      }
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      showToast(lang === 'hi' ? 'भाषा: हिंदी चुनी गई' : 'Language switched to English');
+    }
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Toast Message Helper (Replaces alert)
+    let toastTimer;
+    function showToast(msg) {
+      const box = document.getElementById('toast-box');
+      const text = document.getElementById('toast-message');
+      text.textContent = msg;
+      box.classList.remove('opacity-0', '-translate-y-3');
+      box.classList.add('opacity-100', 'translate-y-0');
+
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        box.classList.remove('opacity-100', 'translate-y-0');
+        box.classList.add('opacity-0', '-translate-y-3');
+      }, 2800);
+    }
+
+    // Clipboard Copy Helper
+    function copyText(text, successMsg) {
+      const tempInput = document.createElement('input');
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      try {
+        document.execCommand('copy');
+        showToast(successMsg);
+      } catch (err) {
+        showToast(text);
+      }
+      document.body.removeChild(tempInput);
+    }
+
+    // Update UPI QR Code dynamically
+    function updateQRCode() {
+      const safeAmt = Math.max(1, parseInt(selectedAmount) || 251);
+      const upiId = '8306865537@upi';
+      const payeeName = 'Shri Gau Seva Parivar';
+      const note = `Gau Seva - ${selectedSeva}`;
+
+      const upiUri = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${safeAmt}&cu=INR&tn=${encodeURIComponent(note)}`;
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(upiUri)}`;
+
+      document.getElementById('upi-qr-img').src = qrUrl;
+      document.getElementById('qr-selected-seva').textContent = selectedSeva;
+      document.getElementById('qr-selected-amt').textContent = `₹${safeAmt.toLocaleString('en-IN')}`;
+    }
+
+    // Select Seva Preset
+    function selectSevaPreset(sevaName, amount, btnElement) {
+      selectedSeva = sevaName;
+      setAmount(amount);
+
+      if (btnElement) {
+        document.querySelectorAll('.seva-option-btn').forEach(btn => {
+          btn.classList.remove('border-maroon-800', 'bg-maroon-800/5');
+          btn.classList.add('border-cream-300');
+        });
+        btnElement.classList.remove('border-cream-300');
+        btnElement.classList.add('border-maroon-800', 'bg-maroon-800/5');
+      }
+    }
+
+    // Set Preset Amount
+    function setAmount(amount) {
+      selectedAmount = amount;
+      document.getElementById('custom-amount').value = amount;
+
+      document.querySelectorAll('.amt-btn').forEach(btn => {
+        const btnAmt = parseInt(btn.getAttribute('data-amt'));
+        if (btnAmt === amount) {
+          btn.className = 'amt-btn py-2.5 px-2 rounded-xl border-2 border-maroon-800 bg-maroon-800 text-white font-bold text-sm transition-all';
+        } else {
+          btn.className = 'amt-btn py-2.5 px-2 rounded-xl border border-cream-300 font-bold text-sm text-stone-800 hover:border-maroon-800 transition-all';
+        }
+      });
+
+      updateQRCode();
+    }
+
+    // Handle Custom Amount Input
+    function handleCustomAmount(val) {
+      const parsed = parseInt(val);
+      if (!isNaN(parsed) && parsed > 0) {
+        selectedAmount = parsed;
+        document.querySelectorAll('.amt-btn').forEach(btn => {
+          const btnAmt = parseInt(btn.getAttribute('data-amt'));
+          if (btnAmt === parsed) {
+            btn.className = 'amt-btn py-2.5 px-2 rounded-xl border-2 border-maroon-800 bg-maroon-800 text-white font-bold text-sm transition-all';
+          } else {
+            btn.className = 'amt-btn py-2.5 px-2 rounded-xl border border-cream-300 font-bold text-sm text-stone-800 hover:border-maroon-800 transition-all';
+          }
+        });
+        updateQRCode();
+      }
+    }
+
+    // Send Donation Confirmation via WhatsApp
+    function confirmDonationOnWhatsApp() {
+      const donorName = document.getElementById('donor-name').value.trim() || 'गौभक्त';
+      const safeAmt = Math.max(1, parseInt(selectedAmount) || 251);
+      const message = `जय गौमाता! 🙏\nमैंने *श्री गौ सेवा परिवार* में गौ सेवा हेतु सहयोग राशि अर्पित की है:\n\n• *नाम:* ${donorName}\n• *सेवा:* ${selectedSeva}\n• *राशि:* ₹${safeAmt}\n\nकृपया पुष्टि करें।`;
+      const waUrl = `https://wa.me/918306865537?text=${encodeURIComponent(message)}`;
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+    }
+
+    // Lightbox Functions
+    function openLightbox(imgSrc, caption) {
+      const modal = document.getElementById('lightbox-modal');
+      document.getElementById('lightbox-img').src = imgSrc;
+      document.getElementById('lightbox-caption').textContent = caption;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // Contact Inquiry Form Submission via WhatsApp
+    function submitInquiryForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('inq-name').value.trim();
+      const phone = document.getElementById('inq-phone').value.trim();
+      const topic = document.getElementById('inq-topic').value;
+      const msg = document.getElementById('inq-msg').value.trim();
+
+      const fullText = `जय गौमाता! 🙏\n*संपर्क संदेश — श्री गौ सेवा परिवार*\n\n• *नाम:* ${name}\n• *मोबाइल:* ${phone}\n• *विषय:* ${topic}\n• *संदेश:* ${msg}`;
+      const waUrl = `https://wa.me/918306865537?text=${encodeURIComponent(fullText)}`;
+      showToast('WhatsApp पर संदेश खोला जा रहा है...');
+      window.open(waUrl, '_blank', 'noopener,noreferrer');
+    }
+  </script>
+</body>
+</html>
