@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel | श्री गौ सेवा परिवार</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: {
+              50: '#FDFBF7',
+              100: '#FAF6EE',
+              200: '#F2E9D8',
+              300: '#E5D5B7',
+            },
+            maroon: {
+              700: '#9E2A2B',
+              800: '#8B261D',
+              900: '#5E1812',
+            },
+            saffron: {
+              500: '#E09F3E',
+              600: '#D97706',
+              700: '#B45309',
+            },
+            forest: {
+              600: '#2D6A4F',
+              700: '#1B4332',
+            }
+          },
+          fontFamily: {
+            hindi: ['"Noto Sans Devanagari"', '"Inter"', 'sans-serif'],
+            serifHindi: ['"Tiro Devanagari Hindi"', '"Playfair Display"', 'serif'],
+            sans: ['"Inter"', '"Noto Sans Devanagari"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #FDFBF7;
+      color: #291D18;
+      font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-saffron-500/20 selection:text-maroon-900">
+
+  <!-- Toast Notification -->
+  <div id="toast-box" class="fixed top-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-all duration-300 transform -translate-y-3">
+    <div class="bg-maroon-900 text-cream-50 px-5 py-3 rounded-full shadow-xl border border-saffron-500/40 flex items-center gap-2.5 text-sm font-medium">
+      <span class="w-2 h-2 rounded-full bg-saffron-500 animate-ping"></span>
+      <span id="toast-message">सफलतापूर्वक सेव हो गया</span>
+    </div>
+  </div>
+
+  <!-- Top Admin Header -->
+  <header class="bg-maroon-900 text-cream-50 border-b border-saffron-500/30 shadow-md">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 h-18 py-3.5 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-saffron-500/20 border border-saffron-500/50 flex items-center justify-center font-serifHindi text-xl font-bold text-saffron-400">
+          ॐ
+        </div>
+        <div>
+          <h1 class="font-serifHindi text-lg sm:text-xl font-bold text-white leading-tight">
+            श्री गौ सेवा परिवार — Admin Panel
+          </h1>
+          <p class="text-[11px] text-saffron-400 tracking-wide">
+            समर्पित प्रबंधन पोर्टल (Dedicated Admin Portal)
+          </p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2.5">
+        <a href="index.html" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white/10 hover:bg-white/20 text-cream-50 text-xs font-bold transition-colors">
+          <span>🌐</span>
+          <span>लाइव वेबसाइट देखें</span>
+        </a>
+        <button id="admin-logout-btn" type="button" onclick="logoutAdmin()"
+                class="hidden px-3.5 py-2 rounded-full bg-red-600/90 hover:bg-red-700 text-white text-xs font-bold transition-colors">
+          लॉगआउट
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-1 flex items-center justify-center p-4 sm:p-8">
+
+    <!-- ======================================================= -->
+    <!-- VIEW 1: DEDICATED ADMIN LOGIN CARD                      -->
+    <!-- ======================================================= -->
+    <div id="admin-login-view" class="w-full max-w-md bg-white rounded-3xl shadow-xl border border-cream-300 p-7 sm:p-10">
+      <div class="text-center mb-7">
+        <div class="w-16 h-16 rounded-2xl bg-maroon-800/10 text-maroon-800 flex items-center justify-center text-3xl mx-auto mb-3 border border-maroon-800/15">
+          🔐
+        </div>
+        <h2 class="font-serifHindi text-2xl sm:text-3xl font-bold text-maroon-900">
+          एडमिन लॉगिन
+        </h2>
+        <p class="text-xs sm:text-sm text-stone-600 mt-1.5">
+          QR कोड, UPI ID, हेल्प नंबर और गैलरी फ़ोटो प्रबंधित करने के लिए लॉगिन करें
+        </p>
+      </div>
+
+      <div id="admin-login-error" class="hidden mb-4 p-3.5 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-xs font-bold text-center">
+        ❌ गलत ईमेल या पासवर्ड! कृपया सही विवरण दर्ज करें।
+      </div>
+
+      <form onsubmit="handleAdminLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-stone-700 mb-1.5">एडमिन ईमेल (Admin Email)</label>
+          <input type="email" id="admin-email-input" required placeholder="shrigausevaparivar@gmail.com"
+                 class="w-full px-4 py-3 rounded-2xl bg-cream-50 border border-cream-300 focus:border-maroon-800 focus:ring-2 focus:ring-maroon-800/15 outline-none text-sm font-medium" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-stone-700 mb-1.5">पासवर्ड (Password)</label>
+          <div class="relative">
+            <input type="password" id="admin-pass-input" required placeholder="••••••••••"
+                   class="w-full px-4 py-3 pr-12 rounded-2xl bg-cream-50 border border-cream-300 focus:border-maroon-800 focus:ring-2 focus:ring-maroon-800/15 outline-none text-sm font-medium" />
+            <button type="button" onclick="toggleAdminPassword()" class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-stone-500 hover:text-maroon-800 px-2 py-1" title="Show/Hide Password">
+              👁️
+            </button>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full bg-maroon-800 hover:bg-maroon-900 text-cream-50 font-bold py-3.5 rounded-full shadow-md hover:shadow-lg transition-all text-sm mt-2">
+          डैशबोर्ड खोलें (Login) →
+        </button>
+      </form>
+
+      <div class="mt-6 pt-5 border-t border-cream-200 text-center">
+        <a href="index.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-stone-600 hover:text-maroon-800 transition-colors">
+          <span>←</span>
+          <span>मुख्य वेबसाइट पर वापस जाएं (index.html)</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ======================================================= -->
+    <!-- VIEW 2: FULL ADMIN DASHBOARD                            -->
+    <!-- ======================================================= -->
+    <div id="admin-dashboard-view" class="hidden w-full max-w-5xl bg-white rounded-3xl shadow-xl border border-cream-300 overflow-hidden">
+      
+      <!-- Navigation Tabs -->
+      <div class="bg-cream-100 border-b border-cream-300 px-4 sm:px-7 pt-4 flex gap-2 overflow-x-auto">
+        <button type="button" onclick="switchAdminTab('payment')" id="tab-btn-payment"
+                class="admin-tab-btn px-4 py-3 rounded-t-2xl text-xs sm:text-sm font-bold bg-white text-maroon-900 border-t border-x border-cream-300 whitespace-nowrap">
+          💳 पेमेंट और QR सेटिंग्स (Payment & QR)
+        </button>
+        <button type="button" onclick="switchAdminTab('contact')" id="tab-btn-contact"
+                class="admin-tab-btn px-4 py-3 rounded-t-2xl text-xs sm:text-sm font-bold text-stone-600 hover:text-maroon-900 whitespace-nowrap">
+          📞 संपर्क और हेल्प नंबर (Contact)
+        </button>
+        <button type="button" onclick="switchAdminTab('gallery')" id="tab-btn-gallery"
+                class="admin-tab-btn px-4 py-3 rounded-t-2xl text-xs sm:text-sm font-bold text-stone-600 hover:text-maroon-900 whitespace-nowrap">
+          🖼️ गौशाला गैलरी (<span id="admin-gallery-count">4</span>)
+        </button>
+      </div>
+
+      <!-- Tab Panels -->
+      <div class="p-5 sm:p-8 space-y-6">
+
+        <!-- TAB 1: PAYMENT & QR SETTINGS -->
+        <div id="admin-tab-payment" class="space-y-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div>
+              <label class="block text-xs font-bold text-stone-700 mb-1.5">UPI ID (भुगतान हेतु)</label>
+              <input type="text" id="cfg-upi-id" oninput="toggleCustomQrPreview()" placeholder="8306865537@upi"
+                     class="w-full px-4 py-3 rounded-2xl bg-cream-50 border border-cream-300 focus:border-maroon-800 outline-none text-sm font-bold text-maroon-900" />
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-stone-700 mb-1.5">प्राप्तकर्ता नाम (Payee Name)</label>
+              <input type="text" id="cfg-payee-name" oninput="toggleCustomQrPreview()" placeholder="Shri Gau Seva Parivar"
+                     class="w-full px-4 py-3 rounded-2xl bg-cream-50 border border-cream-300 focus:border-maroon-800 outline-none text-sm font-medium" />
+            </div>
+          </div>
+
+          <div class="bg-cream-50 p-5 sm:p-6 rounded-3xl border border-cream-300 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <h3 class="font-bold text-base text-maroon-900">QR कोड मोड चुनें</h3>
+                <p class="text-xs text-stone-600 mt-0.5">ऑटो-जनरेटेड QR चुनी गई राशि के अनुसार बदलता है, या आप अपना बैंक/PhonePe QR अपलोड कर सकते हैं</p>
+              </div>
+              <select id="cfg-qr-mode" onchange="toggleCustomQrPreview()" class="px-4 py-2.5 rounded-xl bg-white border border-cream-300 text-xs sm:text-sm font-bold text-maroon-900 outline-none">
+                <option value="dynamic">ऑटो-जनरेटेड डायनामिक QR</option>
+                <option value="custom">कस्टम अपलोड किया गया QR</option>
+              </select>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-12 gap-5 items-center pt-4 border-t border-cream-300/70">
+              <div class="sm:col-span-4 flex flex-col items-center justify-center bg-white p-4 rounded-2xl border border-dashed border-cream-300">
+                <img id="admin-qr-preview" src="" alt="QR Preview" class="w-36 h-36 object-contain rounded-xl bg-white p-1 border border-cream-200" />
+                <button type="button" onclick="clearCustomQr()" class="mt-2.5 text-xs font-bold text-red-600 hover:underline">
+                  कस्टम QR हटाएं
+                </button>
+              </div>
+
+              <div class="sm:col-span-8 space-y-4">
+                <div>
+                  <label class="block text-xs font-bold text-stone-700 mb-1.5">अपने फ़ोन/कंप्यूटर से QR फ़ोटो अपलोड करें:</label>
+                  <input type="file" accept="image/*" onchange="handleQrFileUpload(event)"
+                         class="w-full text-xs text-stone-600 file:mr-3 file:py-2.5 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-maroon-800 file:text-white hover:file:bg-maroon-900 cursor-pointer" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-stone-700 mb-1.5">या QR इमेज का लिंक (URL) पेस्ट करें:</label>
+                  <input type="text" id="cfg-custom-qr-url" oninput="updateAdminQrFromUrl(this.value)" placeholder="https://..."
+                         class="w-full px-4 py-2.5 rounded-xl bg-white border border-cream-300 text-xs outline-none" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: CONTACT & SUPPORT NUMBERS -->
+        <div id="admin-tab-contact" class="hidden space-y-5">
+          <div class="bg-cream-50 p-5 sm:p-6 rounded-3xl border border-cream-300 space-y-5">
+            <div>
+              <label class="block text-xs font-bold text-stone-700 mb-1.5">हेल्प सपोर्ट फ़ोन नंबर (Help Support Number)</label>
+              <input type="text" id="cfg-support-phone" placeholder="+91 8306865537"
+                     class="w-full px-4 py-3 rounded-2xl bg-white border border-cream-300 focus:border-maroon-800 outline-none text-sm font-bold" />
+              <p class="text-[11px] text-stone-500 mt-1">यह नंबर कॉल बटन, संपर्क सेक्शन और फ़ुटर में दिखाई देगा।</p>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-700 mb-1.5">WhatsApp नंबर (WhatsApp Number)</label>
+              <input type="text" id="cfg-whatsapp-phone" placeholder="+91 8306865537"
+                     class="w-full px-4 py-3 rounded-2xl bg-white border border-cream-300 focus:border-maroon-800 outline-none text-sm font-bold text-forest-700" />
+              <p class="text-[11px] text-stone-500 mt-1">वेबसाइट के सभी 'WhatsApp पर बात करें' और दान पुष्टि बटन इसी नंबर पर खुलेंगे।</p>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-stone-700 mb-1.5">आधिकारिक ईमेल (Email Address)</label>
+              <input type="email" id="cfg-contact-email" placeholder="shrigausevaparivar@gmail.com"
+                     class="w-full px-4 py-3 rounded-2xl bg-white border border-cream-300 focus:border-maroon-800 outline-none text-sm font-medium" />
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 3: GAUSHALA GALLERY MANAGER -->
+        <div id="admin-tab-gallery" class="hidden space-y-6">
+          
+          <!-- Add New Photo Form -->
+          <div class="bg-cream-50 p-5 sm:p-6 rounded-3xl border border-cream-300 space-y-4">
+            <h3 class="font-bold text-base text-maroon-900">➕ नई फ़ोटो जोड़ें (गैलरी बढ़ाएं)</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <input type="text" id="new-photo-title-hi" placeholder="शीर्षक / कैप्शन (उदा. प्रातःकालीन गौ सेवा)"
+                     class="px-4 py-2.5 rounded-xl bg-white border border-cream-300 text-xs sm:text-sm outline-none" />
+              <input type="text" id="new-photo-tag" placeholder="टैग (उदा. 05 • सेवा)"
+                     class="px-4 py-2.5 rounded-xl bg-white border border-cream-300 text-xs sm:text-sm outline-none" />
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 items-center">
+              <div>
+                <label class="block text-xs font-bold text-stone-600 mb-1">फ़ोन/कंप्यूटर से फ़ोटो अपलोड करें:</label>
+                <input type="file" id="new-photo-file" accept="image/*"
+                       class="w-full text-xs text-stone-600 file:mr-2 file:py-2 file:px-3.5 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-forest-600 file:text-white cursor-pointer" />
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-stone-600 mb-1">या फ़ोटो लिंक (Image URL) डालें:</label>
+                <input type="text" id="new-photo-url" placeholder="https://..."
+                       class="w-full px-4 py-2.5 rounded-xl bg-white border border-cream-300 text-xs outline-none" />
+              </div>
+            </div>
+
+            <button type="button" onclick="addGalleryPhoto()" class="inline-flex items-center gap-2 bg-forest-600 hover:bg-forest-700 text-white text-xs sm:text-sm font-bold px-5 py-2.5 rounded-full shadow-sm transition-colors">
+              <span>📸</span>
+              <span>गैलरी सूची में जोड़ें</span>
+            </button>
+          </div>
+
+          <!-- Existing Photos List -->
+          <div class="space-y-3">
+            <h4 class="font-bold text-xs uppercase tracking-wider text-stone-600">वर्तमान गैलरी फ़ोटो (हटाएं या क्रम ऊपर-नीचे करें)</h4>
+            <div id="admin-gallery-list" class="space-y-2.5">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Bottom Action Footer -->
+      <div class="bg-cream-100 border-t border-cream-300 px-5 sm:px-8 py-4 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2">
+          <button type="button" onclick="resetToDefaults()" class="px-4 py-2.5 rounded-full border border-cream-300 bg-white hover:bg-red-50 hover:text-red-700 text-stone-600 text-xs font-bold transition-colors">
+            डिफ़ॉल्ट रीसेट करें
+          </button>
+          <a href="index.html" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-full border border-cream-300 bg-white hover:bg-cream-200 text-maroon-900 text-xs font-bold transition-colors">
+            🌐 लाइव साइट खोलें
+          </a>
+        </div>
+
+        <button type="button" id="save-publish-btn" onclick="saveAndPublishSettings()" class="inline-flex items-center gap-2 bg-maroon-800 hover:bg-maroon-900 text-cream-50 font-bold text-sm px-7 py-3 rounded-full shadow-md hover:shadow-lg transition-all">
+          <span>💾</span>
+          <span>सेव और लाइव प्रकाशित करें (Save & Publish)</span>
+        </button>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================================= -->
+  <!-- ADMIN FIREBASE & LOCALSTORAGE SYNC SCRIPT                 -->
+  <!-- ========================================================= -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+    import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+    const DEFAULT_CONFIG = {
+      upiId: '8306865537@upi',
+      payeeName: 'Shri Gau Seva Parivar',
+      qrMode: 'dynamic',
+      customQrImage: '',
+      supportPhone: '+91 8306865537',
+      whatsappPhone: '+91 8306865537',
+      email: 'shrigausevaparivar@gmail.com',
+      gallery: [
+        {
+          id: 'g1',
+          tag: '01 • पोषण',
+          title: 'प्रातःकालीन हरा चारा सेवा',
+          url: 'https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          id: 'g2',
+          tag: '02 • आश्रय',
+          title: 'शांत प्राकृतिक वातावरण',
+          url: 'https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          id: 'g3',
+          tag: '03 • स्नेह',
+          title: 'बछड़ों का वात्सल्य व संरक्षण',
+          url: 'https://images.unsplash.com/photo-1596733430284-f7437764b1a9?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          id: 'g4',
+          tag: '04 • समर्पण',
+          title: 'निरंतर सेवा और करुणा',
+          url: 'https://images.unsplash.com/photo-1527153857715-3908f2bae5e8?auto=format&fit=crop&w=900&q=80'
+        }
+      ]
+    };
+
+    const STORAGE_KEY = 'sgsp_admin_settings_v1';
+    const SESSION_KEY = 'sgsp_admin_logged_in_v1';
+    let siteConfig = loadLocalConfig();
+    let adminGalleryDraft = [];
+    let adminCustomQrDraft = '';
+
+    let db = null;
+    let auth = null;
+    let currentUser = null;
+    const appId = typeof __app_id !== 'undefined' ? __app_id : 'shri-gau-seva-parivar';
+
+    function loadLocalConfig() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          return {
+            ...DEFAULT_CONFIG,
+            ...parsed,
+            gallery: Array.isArray(parsed.gallery) && parsed.gallery.length ? parsed.gallery : DEFAULT_CONFIG.gallery
+          };
+        }
+      } catch (e) {}
+      return JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+    }
+
+    function saveLocalConfig(cfg) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(cfg));
+      } catch (e) {}
+    }
+
+    // Initialize Cloud Connection
+    async function initCloudSync() {
+      try {
+        if (typeof __firebase_config !== 'undefined' && __firebase_config) {
+          const firebaseConfig = JSON.parse(__firebase_config);
+          const app = initializeApp(firebaseConfig);
+          auth = getAuth(app);
+          db = getFirestore(app);
+
+          if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+            const cred = await signInWithCustomToken(auth, __initial_auth_token);
+            currentUser = cred.user;
+          } else {
+            const cred = await signInAnonymously(auth);
+            currentUser = cred.user;
+          }
+
+          if (currentUser && db) {
+            const settingsDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'gauseva_site_settings', 'main_config');
+            const snap = await getDoc(settingsDocRef);
+            if (snap.exists()) {
+              const cloudData = snap.data();
+              siteConfig = {
+                ...DEFAULT_CONFIG,
+                ...cloudData,
+                gallery: Array.isArray(cloudData.gallery) && cloudData.gallery.length ? cloudData.gallery : DEFAULT_CONFIG.gallery
+              };
+              saveLocalConfig(siteConfig);
+              if (sessionStorage.getItem(SESSION_KEY) === 'true') {
+                populateDashboard();
+              }
+            }
+          }
+        }
+      } catch (err) {
+        console.warn('Admin running in local sync mode:', err);
+      }
+    }
+
+    let toastTimer;
+    window.showToast = function(msg) {
+      const box = document.getElementById('toast-box');
+      const text = document.getElementById('toast-message');
+      text.textContent = msg;
+      box.classList.remove('opacity-0', '-translate-y-3');
+      box.classList.add('opacity-100', 'translate-y-0');
+
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        box.classList.remove('opacity-100', 'translate-y-0');
+        box.classList.add('opacity-0', '-translate-y-3');
+      }, 3000);
+    };
+
+    // Compress Image File
+    function compressImageToDataURL(file, maxWidth = 760, quality = 0.76) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            let width = img.width;
+            let height = img.height;
+            if (width > maxWidth) {
+              height = Math.round((height * maxWidth) / width);
+              width = maxWidth;
+            }
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+            resolve(canvas.toDataURL('image/jpeg', quality));
+          };
+          img.onerror = reject;
+          img.src = event.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // Login / Logout Handlers
+    window.toggleAdminPassword = function() {
+      const inp = document.getElementById('admin-pass-input');
+      inp.type = inp.type === 'password' ? 'text' : 'password';
+    };
+
+    window.handleAdminLogin = function(e) {
+      e.preventDefault();
+      const email = document.getElementById('admin-email-input').value.trim().toLowerCase();
+      const pass = document.getElementById('admin-pass-input').value;
+
+      if (email === 'shrigausevaparivar@gmail.com' && pass === 'Neeraj@9530') {
+        sessionStorage.setItem(SESSION_KEY, 'true');
+        document.getElementById('admin-login-error').classList.add('hidden');
+        showDashboardView();
+        showToast('एडमिन डैशबोर्ड में स्वागत है!');
+      } else {
+        document.getElementById('admin-login-error').classList.remove('hidden');
+      }
+    };
+
+    window.logoutAdmin = function() {
+      sessionStorage.removeItem(SESSION_KEY);
+      document.getElementById('admin-pass-input').value = '';
+      document.getElementById('admin-dashboard-view').classList.add('hidden');
+      document.getElementById('admin-logout-btn').classList.add('hidden');
+      document.getElementById('admin-login-view').classList.remove('hidden');
+      showToast('सफलतापूर्वक लॉगआउट हो गए हैं');
+    };
+
+    function showDashboardView() {
+      document.getElementById('admin-login-view').classList.add('hidden');
+      document.getElementById('admin-dashboard-view').classList.remove('hidden');
+      document.getElementById('admin-logout-btn').classList.remove('hidden');
+      populateDashboard();
+    }
+
+    function populateDashboard() {
+      document.getElementById('cfg-upi-id').value = siteConfig.upiId || '';
+      document.getElementById('cfg-payee-name').value = siteConfig.payeeName || '';
+      document.getElementById('cfg-qr-mode').value = siteConfig.qrMode || 'dynamic';
+      adminCustomQrDraft = siteConfig.customQrImage || '';
+      document.getElementById('cfg-custom-qr-url').value = adminCustomQrDraft.startsWith('http') ? adminCustomQrDraft : '';
+
+      document.getElementById('cfg-support-phone').value = siteConfig.supportPhone || '';
+      document.getElementById('cfg-whatsapp-phone').value = siteConfig.whatsappPhone || '';
+      document.getElementById('cfg-contact-email').value = siteConfig.email || '';
+
+      adminGalleryDraft = JSON.parse(JSON.stringify(siteConfig.gallery || []));
+      toggleCustomQrPreview();
+      renderAdminGalleryList();
+    }
+
+    window.switchAdminTab = function(tabName) {
+      ['payment', 'contact', 'gallery'].forEach(t => {
+        const panel = document.getElementById(`admin-tab-${t}`);
+        const btn = document.getElementById(`tab-btn-${t}`);
+        if (t === tabName) {
+          panel.classList.remove('hidden');
+          btn.className = 'admin-tab-btn px-4 py-3 rounded-t-2xl text-xs sm:text-sm font-bold bg-white text-maroon-900 border-t border-x border-cream-300 whitespace-nowrap';
+        } else {
+          panel.classList.add('hidden');
+          btn.className = 'admin-tab-btn px-4 py-3 rounded-t-2xl text-xs sm:text-sm font-bold text-stone-600 hover:text-maroon-900 whitespace-nowrap';
+        }
+      });
+    };
+
+    window.toggleCustomQrPreview = function() {
+      const mode = document.getElementById('cfg-qr-mode').value;
+      const preview = document.getElementById('admin-qr-preview');
+      const upiId = document.getElementById('cfg-upi-id').value.trim() || '8306865537@upi';
+      const payee = document.getElementById('cfg-payee-name').value.trim() || 'Shri Gau Seva Parivar';
+
+      if (mode === 'custom' && adminCustomQrDraft) {
+        preview.src = adminCustomQrDraft;
+      } else {
+        const upiUri = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payee)}&cu=INR`;
+        preview.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(upiUri)}`;
+      }
+    };
+
+    window.handleQrFileUpload = async function(e) {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      try {
+        const dataUrl = await compressImageToDataURL(file, 500, 0.85);
+        adminCustomQrDraft = dataUrl;
+        document.getElementById('cfg-qr-mode').value = 'custom';
+        document.getElementById('cfg-custom-qr-url').value = '';
+        toggleCustomQrPreview();
+        showToast('कस्टम QR फ़ोटो तैयार है — नीचे सेव बटन दबाएं');
+      } catch (err) {
+        showToast('फ़ोटो पढ़ने में त्रुटि हुई');
+      }
+    };
+
+    window.updateAdminQrFromUrl = function(urlVal) {
+      const trimmed = urlVal.trim();
+      if (trimmed) {
+        adminCustomQrDraft = trimmed;
+        document.getElementById('cfg-qr-mode').value = 'custom';
+      }
+      toggleCustomQrPreview();
+    };
+
+    window.clearCustomQr = function() {
+      adminCustomQrDraft = '';
+      document.getElementById('cfg-custom-qr-url').value = '';
+      document.getElementById('cfg-qr-mode').value = 'dynamic';
+      toggleCustomQrPreview();
+      showToast('कस्टम QR हटाया गया, अब डायनामिक QR चलेगा');
+    };
+
+    // Gallery Controls
+    function renderAdminGalleryList() {
+      const list = document.getElementById('admin-gallery-list');
+      const countEl = document.getElementById('admin-gallery-count');
+      if (countEl) countEl.textContent = adminGalleryDraft.length;
+      if (!list) return;
+
+      if (adminGalleryDraft.length === 0) {
+        list.innerHTML = `<div class="p-5 text-center text-xs text-stone-500 bg-cream-50 rounded-2xl border border-cream-300">गैलरी में कोई फ़ोटो नहीं है। ऊपर से नई फ़ोटो जोड़ें।</div>`;
+        return;
+      }
+
+      list.innerHTML = adminGalleryDraft.map((item, index) => `
+        <div class="bg-cream-50 p-3.5 rounded-2xl border border-cream-300 flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3.5 min-w-0">
+            <img src="${item.url}" alt="${item.title}" class="w-14 h-14 rounded-xl object-cover shrink-0 bg-cream-200 border border-cream-300" />
+            <div class="min-w-0">
+              <div class="text-[11px] font-bold text-saffron-700">${item.tag || ''}</div>
+              <div class="text-sm font-bold text-maroon-900 truncate">${item.title}</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button type="button" onclick="moveGalleryPhoto(${index}, -1)" ${index === 0 ? 'disabled' : ''} class="px-2.5 py-1.5 rounded-lg bg-white border border-cream-300 hover:bg-cream-200 disabled:opacity-30 text-xs font-bold" title="ऊपर ले जाएं">↑</button>
+            <button type="button" onclick="moveGalleryPhoto(${index}, 1)" ${index === adminGalleryDraft.length - 1 ? 'disabled' : ''} class="px-2.5 py-1.5 rounded-lg bg-white border border-cream-300 hover:bg-cream-200 disabled:opacity-30 text-xs font-bold" title="नीचे ले जाएं">↓</button>
+            <button type="button" onclick="deleteGalleryPhoto(${index})" class="px-2.5 py-1.5 rounded-lg bg-red-50 border border-red-200 hover:bg-red-600 hover:text-white text-red-600 text-xs font-bold transition-colors" title="हटाएं">🗑️</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    window.addGalleryPhoto = async function() {
+      const titleInput = document.getElementById('new-photo-title-hi');
+      const tagInput = document.getElementById('new-photo-tag');
+      const fileInput = document.getElementById('new-photo-file');
+      const urlInput = document.getElementById('new-photo-url');
+
+      const title = titleInput.value.trim() || 'गौशाला सेवा दर्शन';
+      const tag = tagInput.value.trim() || `0${adminGalleryDraft.length + 1} • दर्शन`;
+      let finalUrl = urlInput.value.trim();
+
+      if (fileInput.files && fileInput.files[0]) {
+        try {
+          finalUrl = await compressImageToDataURL(fileInput.files[0], 720, 0.72);
+        } catch (err) {
+          showToast('फ़ोटो प्रोसेस करने में समस्या हुई');
+          return;
+        }
+      }
+
+      if (!finalUrl) {
+        showToast('कृपया फ़ोटो चुनें या इमेज लिंक डालें');
+        return;
+      }
+
+      adminGalleryDraft.push({
+        id: 'g_' + Date.now(),
+        tag,
+        title,
+        url: finalUrl
+      });
+
+      titleInput.value = '';
+      tagInput.value = '';
+      fileInput.value = '';
+      urlInput.value = '';
+
+      renderAdminGalleryList();
+      showToast('फ़ोटो सूची में जुड़ गई — अब "सेव और लाइव प्रकाशित करें" दबाएं');
+    };
+
+    window.deleteGalleryPhoto = function(idx) {
+      adminGalleryDraft.splice(idx, 1);
+      renderAdminGalleryList();
+      showToast('फ़ोटो हटा दी गई — बदलाव लागू करने के लिए सेव बटन दबाएं');
+    };
+
+    window.moveGalleryPhoto = function(idx, direction) {
+      const newIdx = idx + direction;
+      if (newIdx < 0 || newIdx >= adminGalleryDraft.length) return;
+      const temp = adminGalleryDraft[idx];
+      adminGalleryDraft[idx] = adminGalleryDraft[newIdx];
+      adminGalleryDraft[newIdx] = temp;
+      renderAdminGalleryList();
+    };
+
+    // Save & Publish
+    window.saveAndPublishSettings = async function() {
+      const btn = document.getElementById('save-publish-btn');
+      btn.disabled = true;
+
+      const updatedConfig = {
+        upiId: document.getElementById('cfg-upi-id').value.trim() || '8306865537@upi',
+        payeeName: document.getElementById('cfg-payee-name').value.trim() || 'Shri Gau Seva Parivar',
+        qrMode: document.getElementById('cfg-qr-mode').value,
+        customQrImage: adminCustomQrDraft,
+        supportPhone: document.getElementById('cfg-support-phone').value.trim() || '+91 8306865537',
+        whatsappPhone: document.getElementById('cfg-whatsapp-phone').value.trim() || '+91 8306865537',
+        email: document.getElementById('cfg-contact-email').value.trim() || 'shrigausevaparivar@gmail.com',
+        gallery: adminGalleryDraft.length ? adminGalleryDraft : DEFAULT_CONFIG.gallery,
+        updatedAt: new Date().toISOString()
+      };
+
+      siteConfig = updatedConfig;
+      saveLocalConfig(updatedConfig);
+
+      try {
+        if (db && currentUser) {
+          const settingsDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'gauseva_site_settings', 'main_config');
+          await setDoc(settingsDocRef, updatedConfig);
+        }
+      } catch (err) {
+        console.warn('Cloud publish notice:', err);
+      }
+
+      btn.disabled = false;
+      showToast('✅ सभी बदलाव सेव हो गए हैं और लाइव वेबसाइट पर अपडेट हो गए हैं!');
+    };
+
+    window.resetToDefaults = async function() {
+      siteConfig = JSON.parse(JSON.stringify(DEFAULT_CONFIG));
+      saveLocalConfig(siteConfig);
+      populateDashboard();
+
+      try {
+        if (db && currentUser) {
+          const settingsDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'gauseva_site_settings', 'main_config');
+          await setDoc(settingsDocRef, siteConfig);
+        }
+      } catch (e) {}
+
+      showToast('सभी सेटिंग्स डिफ़ॉल्ट पर रीसेट हो गई हैं');
+    };
+
+    // Check active session on load
+    if (sessionStorage.getItem(SESSION_KEY) === 'true') {
+      showDashboardView();
+    }
+    initCloudSync();
+  </script>
+</body>
+</html>
